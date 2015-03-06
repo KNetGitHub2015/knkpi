@@ -2,7 +2,7 @@ package com.knowledgenet.knkpi
 
 class KPIStats {
     Double pipelineTotal
-    String percentToquota
+    String percentToQuota
     Integer daysLeft
     Double averageRevenuePerDay
     Integer buttsInSeats

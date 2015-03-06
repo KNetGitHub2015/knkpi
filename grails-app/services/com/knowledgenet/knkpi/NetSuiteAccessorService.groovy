@@ -14,7 +14,7 @@ class NetSuiteAccessorService {
     def getSavedSearch(String endPoint, String joiner, String dateFieldId, String dateFilter) {
 
         def result = null
-        log.error("Field Values - endPoint: ${endPoint}, joiner: ${joiner}, dateFieldId: ${dateFieldId}, dateFilter: ${dateFilter}")
+        log.info("Field Values - endPoint: ${endPoint}, joiner: ${joiner}, dateFieldId: ${dateFieldId}, dateFilter: ${dateFilter}")
         HTTPBuilder httpBuilder = new HTTPBuilder(grailsApplication.config.grails.netSuite.baseUrl)
         try {
             httpBuilder.request(Method.POST) {
@@ -29,7 +29,7 @@ class NetSuiteAccessorService {
                     switch (resp.status) {
                         case 200:
                             result = json.recordList
-                            log.info("Successfully fetched Saved Search ${endPoint}. ${result.recordCount} records pulled.")
+                            log.info("Successfully fetched Saved Search ${endPoint}. ${json.recordCount} records pulled.")
                             break
                         default:
                             log.info("Status code ${resp.status} was returned.")
