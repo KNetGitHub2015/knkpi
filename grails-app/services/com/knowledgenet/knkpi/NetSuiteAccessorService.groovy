@@ -24,8 +24,6 @@ class NetSuiteAccessorService {
                 body = [internalId: endPoint, dateFieldId: dateFieldId, joiner: joiner, dateFilter: dateFilter]
 
                 response.success = { resp, json ->
-                    assert resp.status == 200
-
                     switch (resp.status) {
                         case 200:
                             result = json.recordList
@@ -40,6 +38,37 @@ class NetSuiteAccessorService {
             }
         } catch (Exception e) {
             log.error("Unable to pull Saved Search: ${e}")
+        }
+
+        return result
+    }
+
+    def getEmployees() {
+        def result = null
+        log.info("Getting Employees...")
+        HTTPBuilder httpBuilder = new HTTPBuilder(grailsApplication.config.grails.netSuite.baseUrl)
+        try {
+            httpBuilder.request(Method.POST) {
+                uri.path = "${grailsApplication.config.grails.netSuite.getEmployeesUrl}"
+                headers."${AUTH_HEADER}" = getAuthHeader()
+                requestContentType = ContentType.JSON
+                body = null
+
+                response.success = { resp, json ->
+                    switch (resp.status) {
+                        case 200:
+                            result = json.recordList
+                            log.info("Successfully fetched Employees. ${json.recordCount} records pulled.")
+                            break
+                        default:
+                            log.info("Status code ${resp.status} was returned.")
+                            throw new Exception()
+                            break
+                    }
+                }
+            }
+        } catch (Exception e) {
+            log.error("Unable to pull Employees")
         }
 
         return result

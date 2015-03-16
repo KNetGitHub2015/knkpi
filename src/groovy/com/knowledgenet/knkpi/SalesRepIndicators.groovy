@@ -1,15 +1,12 @@
 package com.knowledgenet.knkpi
 
 class SalesRepIndicators {
-
-    String repId
-    String repName //Maybe better on SalesRep
     String grade //ENUM?
-    Double revenueAttainment
-    Integer calls
-    Integer demos
-    Double pipelineManagement
-    String closingPercentage
+    Double revenueAttainment = 0
+    Integer calls = 0
+    Integer demos = 0
+    Double pipelineManagement = 0
+    Double closingPercentage
     String forecastingAccuracy
 
     //probably need a get totals/averages method
