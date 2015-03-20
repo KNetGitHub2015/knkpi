@@ -1,7 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
-    <title></title>
+    <meta name="layout" content="main"/>
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'kpi.css')}" type="text/css">
+    <g:javascript library="jquery" plugin="jquery"/>
+    <g:javascript src="dashBoard.js" />
+    <title>KPI Dashboard</title>
 </head>
 
 <body>
@@ -12,7 +16,28 @@
         <div id="overviewData"></div>
     </div>
 
-    <div id="teamOverview" class="tableData"></div>
+    <div id="teamOverview" class="tableData">
+        <g:each var="manager" in="${managers}" status="i" >
+            ${manager.name}
+            <table id="manager${manager.id}" class="teamTable">
+            <thead>
+                <tr>
+                    <td>name</td>
+                    <td>calls</td>
+                    <td>revenue</td>
+                    <td>demos</td>
+                    <td>pipeline</td>
+                    <td>closing percentage</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            </table>
+        </g:each>
+    </div>
 </div>
+<jq:jquery>
+    dashBoardInit(${raw(salesReps)});
+</jq:jquery>
 </body>
 </html>
