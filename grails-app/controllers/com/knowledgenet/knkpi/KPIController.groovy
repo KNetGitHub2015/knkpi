@@ -30,6 +30,10 @@ class KPIController {
         def salesData = netSuiteAccessorService.getSavedSearch(NetSuiteUtil.CLOSED_SALES_SEARCH, null, NetSuiteUtil.CLOSED_SALES_SEARCH_DATE, dateFilter)
         dataMassageService.setClosedSalesFields(salesReps, salesData)
 
+//        log.info("Pulling Logged Calls for date range: ${dateFilter}.")
+//        def nsCallData = netSuiteAccessorService.getSavedSearch(NetSuiteUtil.LOGGED_CALLS_SEARCH, null, NetSuiteUtil.LOGGED_CALLS_SEARCH_DATE, dateFilter)
+//        dataMassageService.setLoggedCallsFields(salesReps, nsCallData)
+
 
         salesReps.each {
             it.closingPercentage = it.revenueAttainment / it.pipelineManagement
@@ -73,7 +77,7 @@ class KPIController {
 
         //TODO: converting salesReps to jsonMap
 
-        [salesReps: salesRepsJson.toString(), managers: managers]
+        [salesReps: salesRepsJson.toString(), managers: managers, dateFilter: dateFilter]
     }
 
     def getEmployees() {
@@ -113,7 +117,9 @@ class KPIController {
         def nsCallData = netSuiteAccessorService.getSavedSearch(NetSuiteUtil.LOGGED_CALLS_SEARCH, null, NetSuiteUtil.LOGGED_CALLS_SEARCH_DATE, dateFilter)
         dataMassageService.setLoggedCallsFields(salesReps, nsCallData)
 
-        [salesReps: salesReps]
+        def salesRepsJson = salesReps as JSON
+
+        [success: true, salesReps: salesReps.toString()]
 
     }
 }

@@ -1,9 +1,62 @@
 #wrapper {
-    background-color: #656565;
+    font: "Helvetica", "SAN-SERIF";
+    background-color: #fff;
+    align-content: center;
+}
+
+#filter {
+    height: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color: #417C81;
+    color: #fff;
+    padding-left: 20px;
+}
+
+.radioGroup {
+    float: left;
+    padding-right: 10px;
 }
 
 .teamTable {
-    background-color: #333;
+    background-color: #417C81;
     padding: 10px;
     color: #fff;
+    width: 100%;
+    padding-left: 20px;
+}
+
+.expandableTable {
+    color: #222;
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    padding-left: 20px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+thead {
+    height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+thead, td {
+    padding: 0;
+    height: 30;
+}
+
+table tbody tr:nth-child(odd) td{
+    background-color: #68979B;
+}
+table tbody tr:nth-child(even) td{
+    background-color: #417C81;
+}
+
+table thead tr td {
+    height: 40px;
+    background-color: #AA6E39;
 }
