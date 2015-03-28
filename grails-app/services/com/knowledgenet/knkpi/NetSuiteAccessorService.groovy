@@ -11,17 +11,17 @@ class NetSuiteAccessorService {
 
     private static final String AUTH_HEADER = 'Authorization'
 
-    def getSavedSearch(String endPoint, String joiner, String dateFieldId, String dateFilter) {
+    def getSavedSearch(String endPoint, String joiner, String dateFieldId, String dateFilter, String repFieldId, String repId) {
 
         def result = null
         log.info("Field Values - endPoint: ${endPoint}, joiner: ${joiner}, dateFieldId: ${dateFieldId}, dateFilter: ${dateFilter}")
-        HTTPBuilder httpBuilder = new HTTPBuilder(grailsApplication.config.grails.netSuite.baseUrl)
+        HTTPBuilder httpBuilder = new HTTPBuilder(Setting.findByBaseUrl(NetSuiteUtil.BASE_URL)?.baseUrl) // < lol
         try {
             httpBuilder.request(Method.POST) {
-                uri.path = "${grailsApplication.config.grails.netSuite.restletUrl}"
+                uri.path = "${Setting.findByBaseUrl(NetSuiteUtil.BASE_URL)?.searchesUrl}"
                 headers."${AUTH_HEADER}" = getAuthHeader()
                 requestContentType = ContentType.JSON
-                body = [internalId: endPoint, dateFieldId: dateFieldId, joiner: joiner, dateFilter: dateFilter]
+                body = [internalId: endPoint, dateFieldId: dateFieldId, joiner: joiner, dateFilter: dateFilter, repFieldId: repFieldId, repFilter: repId]
 
                 response.success = { resp, json ->
                     switch (resp.status) {
@@ -43,16 +43,16 @@ class NetSuiteAccessorService {
         return result
     }
 
-    def getEmployees() {
+    def getEmployees(String repId) {
         def result = null
         log.info("Getting Employees...")
-        HTTPBuilder httpBuilder = new HTTPBuilder(grailsApplication.config.grails.netSuite.baseUrl)
+        HTTPBuilder httpBuilder = new HTTPBuilder(Setting.findByBaseUrl(NetSuiteUtil.BASE_URL)?.baseUrl) // < lol
         try {
             httpBuilder.request(Method.POST) {
-                uri.path = "${grailsApplication.config.grails.netSuite.getEmployeesUrl}"
+                uri.path = "${Setting.findByBaseUrl(NetSuiteUtil.BASE_URL)?.employeesUrl}"
                 headers."${AUTH_HEADER}" = getAuthHeader()
                 requestContentType = ContentType.JSON
-                body = null
+                body = [repId: repId]
 
                 response.success = { resp, json ->
                     switch (resp.status) {
@@ -75,6 +75,6 @@ class NetSuiteAccessorService {
     }
 
     String getAuthHeader() {
-        return grailsApplication.config.grails.netSuite.auth
+        return Setting.findByBaseUrl(NetSuiteUtil.BASE_URL)?.auth
     }
 }

@@ -1,4 +1,18 @@
-function dashBoardInit(salesReps) {
+function dashBoardInit(managers, salesReps) {
+
+    for (var id in managers) {
+        if (managers.hasOwnProperty(id)) {
+            var managerTotal = managers[id];
+            var managerRow = "<tr class='managerRow' id='manager" + managerTotal.id + "'></tr>";
+            var managerTotalDiv = $('#manager' + managerTotal.id + ' > thead');
+            managerTotalDiv.append(managerRow);
+
+            var $managerTableData = "<td class='repName managerName'>Team: " + managerTotal.name + "</td><td class='calls'>" + managerTotal.totalCalls + "</td><td>" + managerTotal.totalRevenueAttainment + "</td><td>" + managerTotal.totalDemos + "</td><td>" + managerTotal.totalPipelineManagement + "</td><td>" + (managerTotal.totalClosingPercentage * 100).toFixed(2);
+            +"%</td>";
+            $("#manager" + managerTotal.id + " > thead").append($managerTableData);
+
+        }
+    }
 
     for (var repId in salesReps) {
         if (salesReps.hasOwnProperty(repId)) {
@@ -9,7 +23,7 @@ function dashBoardInit(salesReps) {
             var managerDiv = $('#manager' + rep.managerId + ' > tbody');
             managerDiv.append($repRow);
 
-            var $tableData = "<td>" + rep.repName + "</td><td class='calls'>" + rep.calls + "</td><td>" + rep.revenueAttainment + "</td><td>" + rep.demos + "</td><td>" + rep.pipelineManagement + "</td><td>" + (rep.closingPercentage * 100).toFixed(2);
+            var $tableData = "<td class='repName'>" + rep.repName + "</td><td class='calls'>" + rep.calls + "</td><td>" + rep.revenueAttainment + "</td><td>" + rep.demos + "</td><td>" + rep.pipelineManagement + "</td><td>" + (rep.closingPercentage * 100).toFixed(2);
             +"%</td>";
             $("#rep" + rep.repId + "").append($tableData);
         }
@@ -40,15 +54,15 @@ function dashBoardInit(salesReps) {
         alert("Loaded");
     });
 
-    $(".expandableTable").click(function () {
-        var $this = $(this);
+//    $(".expandableTable").click(function () {
+//        var $this = $(this);
 //        if ($this.find(".teamTable").is(':visible')) {
 //            $this.find('table.teamTable').css('background-position', '0 0');
 //        } else {
 //            $this.find('table.teamTable').css('background-position', '0 -12px');
 //        }
-        $this.find(".teamTable").slideToggle("slow");
-    });
+//        $this.find(".teamTable").slideToggle("slow");
+//    });
 
 }
 

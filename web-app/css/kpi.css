@@ -1,3 +1,20 @@
+html {
+    background-color: #659599;
+    background-image: -moz-linear-gradient(center top, #9CC0C3, #659599);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #9CC0C3), color-stop(1, #659599));
+    background-image: linear-gradient(top, #9CC0C3, #659599);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#9CC0C3', EndColorStr = '#659599');
+    background-repeat: no-repeat;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#grailsLogo {
+    background-color: #FFF;
+}
+
 #wrapper {
     font: "Helvetica", "SAN-SERIF";
     background-color: #fff;
@@ -24,6 +41,7 @@
     color: #fff;
     width: 100%;
     padding-left: 20px;
+    padding-right: 20px;
 }
 
 .expandableTable {
@@ -32,6 +50,8 @@
     font-weight: bold;
     padding-bottom: 10px;
     padding-left: 20px;
+    padding-right: 20px;
+
 }
 
 table {
@@ -40,7 +60,7 @@ table {
 
 thead {
     height: 40px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -59,4 +79,36 @@ table tbody tr:nth-child(even) td{
 table thead tr td {
     height: 40px;
     background-color: #AA6E39;
+}
+
+#rep {
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+.repName {
+    padding-left: 10px;
+}
+
+.managerName {
+    font-style: italic;
+}
+
+.managerRow td {
+    background-color: #172856;
+}
+
+.footer {
+    background-color: #417C81;
+}
+
+.copyright{
+    font-size: 10px;
+    color: #fff;
+    margin-top: 10px;
+    float: right;
+}
+.spinner {
+    position: relative;
+
 }

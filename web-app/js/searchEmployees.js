@@ -1,6 +1,7 @@
 function getEmployees(datain) {
     nlapiLogExecution('DEBUG', 'Attempting to fetch Employees', null);
     var o = new Object();
+    var filters = new Array();
 
     var columns = new Array();
     columns[0] = new nlobjSearchColumn('internalid');
@@ -10,7 +11,12 @@ function getEmployees(datain) {
     columns[4] = new nlobjSearchColumn('hiredate');
     columns[5] = new nlobjSearchColumn('birthdate');
 
+    if (datain.repId) {
+        filters[0] = new nlobjSearchFilter("internalIdNumber", null, 'equalto', datain.repId);
+    }
+
     var search = nlapiLoadSearch(null, 'customsearch_kpiemployees');
+    search.addFilters(filters);
     var results = search.runSearch();
 
     o['recordList'] = results.getResults(0,1000);

@@ -6,8 +6,8 @@ class SalesRepIndicators {
     Integer calls = 0
     Integer demos = 0
     Double pipelineManagement = 0
-    Double closingPercentage
-    String forecastingAccuracy
+    Double closingPercentage = 0
+    Double forecastingAccuracy
 
     //probably need a get totals/averages method
 

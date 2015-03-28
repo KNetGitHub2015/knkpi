@@ -8,6 +8,7 @@ function getSavedSearch(datain) {
     var parsedLastInternalId = parseInt(datain.lastInternalId);
     var lastInternalId = parsedLastInternalId > 0 ? parsedLastInternalId : 0;
     var joiner = datain.joiner
+    var repId = datain.repId
 
     if (!joiner) {
         joiner = null
@@ -20,9 +21,13 @@ function getSavedSearch(datain) {
     do {
         filters[0] = new nlobjSearchFilter(datain.dateFieldId, joiner, 'within', datain.dateFilter);
 
-        if (lastInternalId > 0) {
-            filters[1] = new nlobjSearchFilter('internalIdNumber', null, 'greaterthan', lastInternalId);
+        if (repId > 0) {
+            filters[1] = new nlobjSearchFilter(datain.repFieldId, null, 'equalto', repId);
         }
+
+//        if (lastInternalId > 0) {
+//            filters[1] = new nlobjSearchFilter('internalIdNumber', null, 'greaterthan', lastInternalId);
+//        }
 
         var pullStartTime = new Date().getTime();
 

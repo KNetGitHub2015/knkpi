@@ -24,11 +24,11 @@
 
     <div id="teamOverview" class="tableData">
         <g:each var="manager" in="${managers}" status="i" >
-            <div class="expandableTable">${manager.name}
+            <div class="expandableTable">
                 <table id="manager${manager.id}" class="teamTable">
                     <thead>
                         <tr>
-                            <td>name</td>
+                            <td class="repName">name</td>
                             <td>calls</td>
                             <td>revenue</td>
                             <td>demos</td>
@@ -44,7 +44,7 @@
     </div>
 </div>
 <jq:jquery>
-    dashBoardInit(${raw(salesReps)});
+    dashBoardInit(${raw(managersJson)}, ${raw(salesReps)});
 </jq:jquery>
 </body>
 </html>
