@@ -23,7 +23,7 @@ function dashBoardInit(managers, salesReps) {
             var managerDiv = $('#manager' + rep.managerId + ' > tbody');
             managerDiv.append($repRow);
 
-            var $tableData = "<td class='repName'>" + rep.repName + "</td><td class='calls'>" + rep.calls + "</td><td>" + rep.revenueAttainment + "</td><td>" + rep.demos + "</td><td>" + rep.pipelineManagement + "</td><td>" + (rep.closingPercentage * 100).toFixed(2);
+            var $tableData = "<td class='repName'><a href='/knkpi/KPI/scoreCard?repId=" + rep.repId + "'>" + rep.repName + "</a></td><td class='calls'>" + rep.calls + "</td><td>" + rep.revenueAttainment + "</td><td>" + rep.demos + "</td><td>" + rep.pipelineManagement + "</td><td>" + (rep.closingPercentage * 100).toFixed(2);
             +"%</td>";
             $("#rep" + rep.repId + "").append($tableData);
         }

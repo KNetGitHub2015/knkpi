@@ -94,6 +94,11 @@ table thead tr td {
     padding-left: 10px;
 }
 
+.repName a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
 .managerName {
     font-style: italic;
 }
