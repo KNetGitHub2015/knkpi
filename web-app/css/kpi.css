@@ -86,6 +86,10 @@ table thead tr td {
     padding-bottom: 20px;
 }
 
+#repInfo {
+    line-height: 40px;
+}
+
 .repName {
     padding-left: 10px;
 }
@@ -110,5 +114,14 @@ table thead tr td {
 }
 .spinner {
     position: relative;
-
 }
+
+.infoFields {
+   padding-right: 30px;
+}
+
+.repLabels {
+    font-weight: bold;
+    font-style: italic;
+}
+

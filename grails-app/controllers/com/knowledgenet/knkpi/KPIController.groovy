@@ -7,9 +7,9 @@ class KPIController {
     def netSuiteAccessorService
     def dataMassageService
 
-    def dashboard() {
-        def viewInfo = new JsonSlurper().parseText(request.JSON.toString())
-        String dateFilter = viewInfo.dateFilter
+    def dashboard(String dateFilter) {
+//        def viewInfo = new JsonSlurper().parseText(request.JSON.toString())
+//        String dateFilter = viewInfo.dateFilter
 
         if (!dateFilter) {
             dateFilter = "thismonth"
@@ -94,11 +94,11 @@ class KPIController {
         [salesReps: salesRepsJson.toString(), managers: managers, managersJson: managersJson.toString(), dateFilter: dateFilter]
     }
 
-    def scoreCard() {
+    def scoreCard(String repId) {
         List<SalesRep> salesReps = getEmployees(null)
         List selectReps = salesReps.asList()
 
-        [salesReps: selectReps]
+        [salesReps: selectReps, repId: repId]
     }
 
     def getEmployees(String repId) {
@@ -140,11 +140,9 @@ class KPIController {
 
     }
 
-    def getScoreCardRepData(String repId) {
+    def getScoreCardRepData(String repId, String dateFilter) {
         SalesRep selectedRep = new SalesRep()
-
-        def viewInfo = new JsonSlurper().parseText(request.JSON.toString())
-        String dateFilter = viewInfo.dateFilter
+        Setting setting = Setting.findByBaseUrl(NetSuiteUtil.BASE_URL)
 
         if (!dateFilter) {
             dateFilter = "thismonth"
@@ -183,6 +181,11 @@ class KPIController {
             }
 
         }
+
+        selectedRep.demoSetting = setting.demoSetting
+        selectedRep.closingSetting = setting.closingSetting
+        selectedRep.pipelineSetting = setting.pipelineSetting
+        selectedRep.revenueSetting = setting.revenueSetting
 
         def selectedRepJson = selectedRep as JSON
 

@@ -12,11 +12,14 @@
 <div id="wrapper">
     <div id="topBar">
         <div id="filter">
-            <g:radioGroup name="duration"
-                          labels="['Month','Quarter','Year']"
-                          values="['thismonth','thisquarter','thisyear']">
-                <p class="radioGroup" >${it.label} ${it.radio}</p>
-            </g:radioGroup>
+            <g:form controller="KPI" action="dashboard">
+                <g:radioGroup name="dateFilter" value="thismonth"
+                              labels="['Month','Quarter','Year']"
+                              values="['thismonth','thisfiscalquarter','thisyear']"
+                              onchange="submit()">
+                    <p class="radioGroup" >${it.label} ${it.radio}</p>
+                </g:radioGroup>
+            </g:form>
         </div> <br>
         <div id="revenueGraph"></div>
         <div id="overviewData"></div>

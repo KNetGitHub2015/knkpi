@@ -12,7 +12,6 @@ class Setting {
     String pipelineSetting
     String closingSetting
 
-
     static constraints = {
     }
 }

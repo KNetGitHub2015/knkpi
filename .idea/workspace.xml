@@ -87,7 +87,22 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/grails-app/controllers/com/knowledgenet/knkpi/KPIController.groovy" line="103" class="com.knowledgenet.knkpi.KPIController" package="com.knowledgenet.knkpi">
+      <breakpoint url="file://$PROJECT_DIR$/grails-app/controllers/com/knowledgenet/knkpi/KPIController.groovy" line="10" class="com.knowledgenet.knkpi.KPIController" package="com.knowledgenet.knkpi">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/grails-app/controllers/com/knowledgenet/knkpi/KPIController.groovy" line="13" class="com.knowledgenet.knkpi.KPIController" package="com.knowledgenet.knkpi">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -115,34 +130,43 @@
       <file leaf-file-name="scoreCard.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-app/js/scoreCard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="25" selection-start="189" selection-end="189" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+            <state line="12" column="0" selection-start="309" selection-end="544" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="1098">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KPIController.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/knowledgenet/knkpi/KPIController.groovy">
+      <file leaf-file-name="dashBoard.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-app/js/dashBoard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="188" column="0" selection-start="7922" selection-end="7922" vertical-scroll-proportion="-11.96" vertical-offset="3067" max-vertical-offset="3528">
+            <state line="25" column="225" selection-start="1453" selection-end="1493" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="1368">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="kpi.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="dashboard.gsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/KPI/dashboard.gsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="46" selection-start="545" selection-end="545" vertical-scroll-proportion="2.7692308" vertical-offset="414" max-vertical-offset="1044">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SalesRepIndicators.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/groovy/com/knowledgenet/knkpi/SalesRepIndicators.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="0" selection-start="260" selection-end="443" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kpi.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-app/css/kpi.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="1" selection-start="1590" selection-end="1590" vertical-scroll-proportion="0.73417723" vertical-offset="1110" max-vertical-offset="2160">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NetSuiteAccessorService.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/services/com/knowledgenet/knkpi/NetSuiteAccessorService.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="0" selection-start="2377" selection-end="2377" vertical-scroll-proportion="0.0" vertical-offset="788" max-vertical-offset="1494">
+            <state line="46" column="3" selection-start="1063" selection-end="1079" vertical-scroll-proportion="0.0" vertical-offset="1247" max-vertical-offset="2394">
               <folding />
             </state>
           </provider>
@@ -151,7 +175,7 @@
       <file leaf-file-name="searchEmployees.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-app/js/searchEmployees.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="28" selection-start="1261" selection-end="1261" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="792">
+            <state line="38" column="28" selection-start="1261" selection-end="1261" vertical-scroll-proportion="0.0" vertical-offset="684" max-vertical-offset="792">
               <folding />
             </state>
           </provider>
@@ -160,34 +184,37 @@
       <file leaf-file-name="searchGetter.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-app/js/searchGetter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="96" selection-start="813" selection-end="905" vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="1188">
+            <state line="21" column="96" selection-start="813" selection-end="905" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1188">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.gsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/layouts/main.gsp">
+      <file leaf-file-name="Setting.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/domain/com/knowledgenet/knkpi/Setting.groovy">
+          <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="147" selection-start="1434" selection-end="1434" vertical-scroll-proportion="-13.148149" vertical-offset="59" max-vertical-offset="594">
+            <state line="12" column="25" selection-start="255" selection-end="255" vertical-scroll-proportion="-4.0" vertical-offset="0" max-vertical-offset="414">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scoreCard.gsp" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="scoreCard.gsp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/grails-app/views/KPI/scoreCard.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="80" selection-start="996" selection-end="996" vertical-scroll-proportion="-6.8653846" vertical-offset="39" max-vertical-offset="738">
+            <state line="56" column="0" selection-start="2129" selection-end="2892" vertical-scroll-proportion="0.46919432" vertical-offset="810" max-vertical-offset="1692">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SettingController.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/knowledgenet/knkpi/SettingController.groovy">
+      <file leaf-file-name="SalesRep.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/groovy/com/knowledgenet/knkpi/SalesRep.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="6" selection-start="165" selection-end="165" vertical-scroll-proportion="54.48" vertical-offset="1488" max-vertical-offset="1962">
+            <state line="2" column="6" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="306">
               <folding />
             </state>
           </provider>
@@ -216,28 +243,28 @@
         <option value="$PROJECT_DIR$/grails-app/services/com/knowledgenet/knkpi/DataMassageService.groovy" />
         <option value="$PROJECT_DIR$/src/groovy/com/knowledgenet/knkpi/Managers.groovy" />
         <option value="$PROJECT_DIR$/grails-app/conf/BuildConfig.groovy" />
-        <option value="$PROJECT_DIR$/src/groovy/com/knowledgenet/knkpi/SalesRepIndicators.groovy" />
         <option value="$PROJECT_DIR$/src/groovy/com/knowledgenet/knkpi/Manager.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/views/KPI/dashboard.gsp" />
-        <option value="$PROJECT_DIR$/web-app/js/dashBoard.js" />
         <option value="$PROJECT_DIR$/web-app/js/searchGetter.js" />
         <option value="$PROJECT_DIR$/grails-app/domain/knkpi/Settings.groovy" />
         <option value="$PROJECT_DIR$/grails-app/domain/knkpi/Setting.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/knkpi/SettingController.groovy" />
         <option value="$PROJECT_DIR$/knkpi-config.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/domain/com/knowledgenet/knkpi/Setting.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/com/knowledgenet/knkpi/SettingController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
         <option value="$PROJECT_DIR$/src/groovy/com/knowledgenet/knkpi/NetSuiteUtil.groovy" />
         <option value="$PROJECT_DIR$/web-app/css/main.css" />
         <option value="$PROJECT_DIR$/grails-app/conf/DataSource.groovy" />
         <option value="$PROJECT_DIR$/grails-app/services/com/knowledgenet/knkpi/NetSuiteAccessorService.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/controllers/com/knowledgenet/knkpi/KPIController.groovy" />
         <option value="$PROJECT_DIR$/web-app/js/searchEmployees.js" />
         <option value="$PROJECT_DIR$/grails-app/views/layouts/main.gsp" />
-        <option value="$PROJECT_DIR$/grails-app/views/KPI/scoreCard.gsp" />
-        <option value="$PROJECT_DIR$/web-app/js/scoreCard.js" />
         <option value="$PROJECT_DIR$/web-app/css/kpi.css" />
+        <option value="$PROJECT_DIR$/web-app/js/dashBoard.js" />
+        <option value="$PROJECT_DIR$/src/groovy/com/knowledgenet/knkpi/SalesRepIndicators.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/domain/com/knowledgenet/knkpi/Setting.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/views/KPI/dashboard.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/controllers/com/knowledgenet/knkpi/KPIController.groovy" />
+        <option value="$PROJECT_DIR$/web-app/js/scoreCard.js" />
+        <option value="$PROJECT_DIR$/grails-app/views/KPI/scoreCard.gsp" />
       </list>
     </option>
   </component>
@@ -293,6 +320,7 @@
     <property name="FullScreen" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="LayoutCode.rearrangeEntriesJavaScript" value="false" />
+    <property name="LayoutCode.rearrangeEntriesGSP" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -605,12 +633,14 @@
       <workItem from="1427302523436" duration="28000" />
       <workItem from="1427490455779" duration="100000" />
       <workItem from="1427511334737" duration="5324000" />
-      <workItem from="1427516703200" duration="5389000" />
+      <workItem from="1427516703200" duration="13379000" />
+      <workItem from="1427728258902" duration="60000" />
+      <workItem from="1427771112364" duration="10371000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="168345000" />
+    <option name="totallyTimeSpent" value="186766000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-10" y="14" width="1940" height="1052" extended-state="0" />
@@ -819,11 +849,6 @@
         <state line="128" column="21" selection-start="5427" selection-end="5427" vertical-scroll-proportion="6.1604276" vertical-offset="0" max-vertical-offset="2448" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-app/js/dashBoard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="41" selection-start="86" selection-end="120" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1368" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="286" />
@@ -848,24 +873,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/index.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="2304">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="2304" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/setting/show.gsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2196">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/com/knowledgenet/knkpi/Setting.groovy">
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="22" selection-start="202" selection-end="202" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="432">
           <folding />
         </state>
       </provider>
@@ -877,65 +890,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/groovy/com/knowledgenet/knkpi/SalesRepIndicators.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="32" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/conf/DataSource.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="5" selection-start="996" selection-end="996" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1062">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/KPI/dashboard.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="5" selection-start="104" selection-end="140" vertical-scroll-proportion="-1.0384616" vertical-offset="0" max-vertical-offset="990">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/groovy/com/knowledgenet/knkpi/SalesRep.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="6" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/knowledgenet/knkpi/SettingController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="6" selection-start="165" selection-end="165" vertical-scroll-proportion="54.48" vertical-offset="1488" max-vertical-offset="1962">
-          <folding />
-        </state>
+        <state line="29" column="5" selection-start="996" selection-end="996" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1062" />
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/codehaus/groovy/modules/http-builder/http-builder/0.6/http-builder-0.6.jar!/groovyx/net/http/HTTPBuilder.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="31" selection-start="3013" selection-end="3013" vertical-scroll-proportion="-6.12" vertical-offset="585" max-vertical-offset="2592">
-          <folding />
-        </state>
+        <state line="42" column="31" selection-start="3013" selection-end="3013" vertical-scroll-proportion="-6.12" vertical-offset="585" max-vertical-offset="2592" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/services/com/knowledgenet/knkpi/NetSuiteAccessorService.groovy">
+    <entry file="file://$PROJECT_DIR$/grails-app/views/layouts/main.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="0" selection-start="2377" selection-end="2377" vertical-scroll-proportion="0.0" vertical-offset="788" max-vertical-offset="1494">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/knowledgenet/knkpi/KPIController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="188" column="0" selection-start="7922" selection-end="7922" vertical-scroll-proportion="-11.96" vertical-offset="3067" max-vertical-offset="3528">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-app/js/searchGetter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="96" selection-start="813" selection-end="905" vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="1188">
+        <state line="23" column="147" selection-start="1434" selection-end="1434" vertical-scroll-proportion="-13.148149" vertical-offset="59" max-vertical-offset="594">
           <folding />
         </state>
       </provider>
@@ -947,30 +914,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/layouts/main.gsp">
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/knowledgenet/knkpi/SettingController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="147" selection-start="1434" selection-end="1434" vertical-scroll-proportion="-13.148149" vertical-offset="59" max-vertical-offset="594">
+        <state line="8" column="6" selection-start="165" selection-end="165" vertical-scroll-proportion="-3.0334077" vertical-offset="1488" max-vertical-offset="1962">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/KPI/scoreCard.gsp">
+    <entry file="file://$PROJECT_DIR$/src/groovy/com/knowledgenet/knkpi/SalesRep.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="80" selection-start="996" selection-end="996" vertical-scroll-proportion="-6.8653846" vertical-offset="39" max-vertical-offset="738">
+        <state line="2" column="6" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-app/js/scoreCard.js">
+    <entry file="file://$PROJECT_DIR$/src/groovy/com/knowledgenet/knkpi/SalesRepIndicators.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="25" selection-start="189" selection-end="189" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+        <state line="11" column="0" selection-start="260" selection-end="443" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/com/knowledgenet/knkpi/Setting.groovy">
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="25" selection-start="255" selection-end="255" vertical-scroll-proportion="-4.0" vertical-offset="0" max-vertical-offset="414">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-app/js/searchGetter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="96" selection-start="813" selection-end="905" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1188">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/services/com/knowledgenet/knkpi/NetSuiteAccessorService.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="0" selection-start="2505" selection-end="2505" vertical-scroll-proportion="1.7004219" vertical-offset="202" max-vertical-offset="1494">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/knowledgenet/knkpi/KPIController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="184" column="8" selection-start="7891" selection-end="8119" vertical-scroll-proportion="-13.0" vertical-offset="2969" max-vertical-offset="3582">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-app/js/dashBoard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="225" selection-start="1453" selection-end="1493" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="1368">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/KPI/dashboard.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="46" selection-start="545" selection-end="545" vertical-scroll-proportion="2.7692308" vertical-offset="414" max-vertical-offset="1044">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/css/kpi.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="1" selection-start="1590" selection-end="1590" vertical-scroll-proportion="0.73417723" vertical-offset="1110" max-vertical-offset="2160">
+        <state line="46" column="3" selection-start="1063" selection-end="1079" vertical-scroll-proportion="0.0" vertical-offset="599" max-vertical-offset="2394">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-app/js/scoreCard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="309" selection-end="544" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="1098">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/KPI/scoreCard.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="0" selection-start="2129" selection-end="2892" vertical-scroll-proportion="0.46919432" vertical-offset="810" max-vertical-offset="1692">
           <folding />
         </state>
       </provider>

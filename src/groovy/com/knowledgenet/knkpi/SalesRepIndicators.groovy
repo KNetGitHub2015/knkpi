@@ -9,6 +9,12 @@ class SalesRepIndicators {
     Double closingPercentage = 0
     Double forecastingAccuracy
 
-    //probably need a get totals/averages method
+    //These atm are set by the Setting domain class on use
+    String revenueSetting
+    String callSetting
+    String demoSetting
+    String pipelineSetting
+    String closingSetting
+
 
 }
