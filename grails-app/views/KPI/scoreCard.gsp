@@ -19,7 +19,7 @@
     <div id="topBar">
         <div id="filter">
             <g:radioGroup name="duration" id="duration" value="thismonth"
-                          labels="['Month', 'Quarter', 'Year']"
+                          labels="['MTD', 'QTD', 'YTD']"
                           values="['thismonth', 'thisfiscalquarter', 'thisyear']">
                 <p class="radioGroup">${it.label} ${it.radio}</p>
             </g:radioGroup>
@@ -34,7 +34,7 @@
                               controller: 'KPI',
                               action: 'getScoreCardRepData',
                               params: '\'repId=\' + this.value + \'&dateFilter=\' + getDateFilter()',
-                              onSuccess: 'updateScoreCard(data)')}"/>
+                              onSuccess: 'updateScoreCard(data, getDateFilter())')}"/>
         </form><span id="spinner" class="spinner" style="display:none;"></span><br>
 
         <div id="repInfo">
@@ -85,5 +85,11 @@
         </table>
     </div>
 </div>
+%{--<jq:jquery>--}%
+    %{--jQuery(document).ready(function () {--}%
+        %{--console.log("document ready");--}%
+        %{--$("input[name='duration']").change(changedFilter(${repId}));--}%
+    %{--})--}%
+%{--</jq:jquery>--}%
 </body>
 </html>

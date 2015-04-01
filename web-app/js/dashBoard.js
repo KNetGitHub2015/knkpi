@@ -51,7 +51,6 @@ function dashBoardInit(managers, salesReps) {
 //                alert ("USomething went wrong trying to load Call Data.");
 //            }
 //        });
-        alert("Loaded");
     });
 
 //    $(".expandableTable").click(function () {

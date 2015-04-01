@@ -13,8 +13,8 @@
     <div id="topBar">
         <div id="filter">
             <g:form controller="KPI" action="dashboard">
-                <g:radioGroup name="dateFilter" value="thismonth"
-                              labels="['Month','Quarter','Year']"
+                <g:radioGroup name="dateFilter" value="${dateFilter}"
+                              labels="['MTD','QTD','YTD']"
                               values="['thismonth','thisfiscalquarter','thisyear']"
                               onchange="submit()">
                     <p class="radioGroup" >${it.label} ${it.radio}</p>

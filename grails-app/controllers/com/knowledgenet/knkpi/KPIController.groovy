@@ -30,9 +30,9 @@ class KPIController {
         def salesData = netSuiteAccessorService.getSavedSearch(NetSuiteUtil.CLOSED_SALES_SEARCH, null, NetSuiteUtil.CLOSED_SALES_SEARCH_DATE, dateFilter, null, null)
         dataMassageService.setClosedSalesFields(salesReps, salesData)
 
-//        log.info("Pulling Logged Calls for date range: ${dateFilter}.")
-//        def nsCallData = netSuiteAccessorService.getSavedSearch(NetSuiteUtil.LOGGED_CALLS_SEARCH, null, NetSuiteUtil.LOGGED_CALLS_SEARCH_DATE, dateFilter, null, null)
-//        dataMassageService.setLoggedCallsFields(salesReps, nsCallData)
+        log.info("Pulling Logged Calls for date range: ${dateFilter}.")
+        def nsCallData = netSuiteAccessorService.getSavedSearch(NetSuiteUtil.LOGGED_CALLS_SEARCH, null, NetSuiteUtil.LOGGED_CALLS_SEARCH_DATE, dateFilter, null, null)
+        dataMassageService.setLoggedCallsFields(salesReps, nsCallData)
 
 
         salesReps.each {
@@ -112,6 +112,8 @@ class KPIController {
             rep.title = it.columns["title"]
             rep.managerName = it.columns["supervisor"].name
             rep.managerId = it.columns["supervisor"].internalid
+            rep.startDate = it.columns["hiredate"]
+            rep.birthDay = it.columns["birthdate"]
 
 
             salesReps << rep
@@ -165,9 +167,9 @@ class KPIController {
             def salesData = netSuiteAccessorService.getSavedSearch(NetSuiteUtil.CLOSED_SALES_SEARCH, null, NetSuiteUtil.CLOSED_SALES_SEARCH_DATE, dateFilter, NetSuiteUtil.CLOSED_SALES_SEARCH_REP, repId)
             dataMassageService.setClosedSalesFields(selectedReps, salesData)
 
-            //        log.info("Pulling Logged Calls for date range: ${dateFilter}.")
-            //        def nsCallData = netSuiteAccessorService.getSavedSearch(NetSuiteUtil.LOGGED_CALLS_SEARCH, null, NetSuiteUtil.LOGGED_CALLS_SEARCH_DATE, dateFilter, NetSuiteUtil.LOGGED_CALLS_SEARCH_REP, repId)
-            //        dataMassageService.setLoggedCallsFields(selectedRep, nsCallData)
+            log.info("Pulling Logged Calls for date range: ${dateFilter}.")
+            def nsCallData = netSuiteAccessorService.getSavedSearch(NetSuiteUtil.LOGGED_CALLS_SEARCH, null, NetSuiteUtil.LOGGED_CALLS_SEARCH_DATE, dateFilter, NetSuiteUtil.LOGGED_CALLS_SEARCH_REP, repId)
+            dataMassageService.setLoggedCallsFields(selectedReps, nsCallData)
 
             selectedReps.each {
                 it.closingPercentage = it.revenueAttainment / it.pipelineManagement
@@ -182,6 +184,7 @@ class KPIController {
 
         }
 
+        selectedRep.callSetting = setting.callSetting
         selectedRep.demoSetting = setting.demoSetting
         selectedRep.closingSetting = setting.closingSetting
         selectedRep.pipelineSetting = setting.pipelineSetting

@@ -1,5 +1,18 @@
 
-function updateScoreCard(data) {
+function updateScoreCard(data, dateFilter) {
+    var metricMultiplier = 1;
+
+    switch(dateFilter) {
+        case "thisyear":
+            metricMultiplier = 3;
+            break;
+        case "thisfiscalquarter":
+            metricMultiplier = 2;
+            break;
+        default:
+        metricMultiplier = 1;
+    }
+
     $("#repStatsTable tbody").children().remove()
     $(".spinner").hide();
 
@@ -8,13 +21,14 @@ function updateScoreCard(data) {
     $("#repTitle").html(rep.title);
     $("#repManager").html(rep.managerName);
     $("#repStartDate").html(rep.startDate);
-    $("#repBirthDate").html(rep.birthDate);
+    $("#repBirthDate").html(rep.birthDay);
 
 //    $("#revenueAmount").html(rep.revenueAttainment);
 //    $("#demoAmount").html(rep.demos);
 //    $("#pipelineAmount").html(rep.pipelineManagement);
 //    $("#closingPercentageAmount").html((rep.closingPercentage * 100).toFixed(2));
 
+    var callSetting = JSON.parse(rep.callSetting);
     var demoSetting = JSON.parse(rep.demoSetting);
     var closingSetting = JSON.parse(rep.closingSetting);
     var pipelineSetting = JSON.parse(rep.pipelineSetting);
@@ -23,19 +37,22 @@ function updateScoreCard(data) {
 
     $tableId = $("#repStatsTable > tbody");
 
-    var revenueCalc = ((rep.revenueAttainment / revenueSetting["A"]) * 100).toFixed(2);
-    $revenueData = "<tr><td>Revenue</td><td>" + rep.revenueAttainment + "</td><td>" + revenueSetting["A"] + "</td><td>" + revenueCalc + "</td></tr>";
+    var callsCalc = ((rep.calls / (callSetting["A"] * metricMultiplier)) * 100).toFixed(2);
+    $callData = "<tr><td>Calls</td><td>" + rep.calls + "</td><td>" + (callSetting["A"] * metricMultiplier) + "</td><td>" + callsCalc + "%</td></tr>";
 
-    var demoCalc = ((rep.demos / demoSetting["A"]) * 100).toFixed(2);
-    $demoData = "<tr><td>Demo</td><td>" + rep.demos + "</td><td>" + demoSetting["A"] + "</td><td>" + demoCalc + "</td></tr>";
+    var revenueCalc = ((rep.revenueAttainment / (revenueSetting["A"] * metricMultiplier)) * 100).toFixed(2);
+    $revenueData = "<tr><td>Revenue</td><td>" + rep.revenueAttainment + "</td><td>" + (revenueSetting["A"] * metricMultiplier) + "</td><td>" + revenueCalc + "%</td></tr>";
 
-    var pipelineCalc = ((rep.pipelineManagement / pipelineSetting["A"]) * 100).toFixed(2);
-    $pipelineData = "<tr><td>Pipeline</td><td>" + rep.pipelineManagement + "</td><td>" + pipelineSetting["A"] + "</td><td>" + pipelineCalc + "</td></tr>";
+    var demoCalc = ((rep.demos / (demoSetting["A"] * metricMultiplier)) * 100).toFixed(2);
+    $demoData = "<tr><td>Demo</td><td>" + rep.demos + "</td><td>" + (demoSetting["A"] * metricMultiplier) + "</td><td>" + demoCalc + "%</td></tr>";
 
-    var closingCalc = ((rep.closingPercentage / closingSetting["A"]) * 100).toFixed(2);
-    $closingData = "<tr><td>Closing</td><td>" + (rep.closingPercentage * 100).toFixed(2) + "</td><td>" + closingSetting["A"] + "</td><td>" + closingCalc + "</td></tr>";
+    var pipelineCalc = ((rep.pipelineManagement / (pipelineSetting["A"] * metricMultiplier)) * 100).toFixed(2);
+    $pipelineData = "<tr><td>Pipeline</td><td>" + rep.pipelineManagement + "</td><td>" + (pipelineSetting["A"] * metricMultiplier) + "</td><td>" + pipelineCalc + "%</td></tr>";
 
-    $allData = $revenueData + $demoData + $pipelineData + $closingData
+    var closingCalc = ((rep.closingPercentage / (closingSetting["A"] * metricMultiplier)) * 100).toFixed(2);
+    $closingData = "<tr><td>Closing</td><td>" + (rep.closingPercentage * 100).toFixed(2) + "%</td><td>" + (closingSetting["A"] * metricMultiplier) + "%</td><td>" + closingCalc + "%</td></tr>";
+
+    $allData = $callData + $revenueData + $demoData + $pipelineData + $closingData
 
     $tableId.append($allData);
 
@@ -54,3 +71,20 @@ function redirectedRep(repId) {
 function getDateFilter() {
     return $("#duration:checked").val();
 }
+
+
+//TODO: Need to use this to fix the dateFilter switch bug
+//function changedFilter(repId) {
+//    console.log("entered changedFilter");
+//    $.ajax({
+//        url: "getScoreCardRepData",
+//        type:"post",
+//        data: 'repId=' + repId + '&dateFilter=' + getDateFilter(),
+//        success: function(data) {
+//            updateScoreCard(data);
+//        },
+//        error: function(xhr){
+//            alert(xhr.responseText); //<----when no data alert the err msg
+//        }
+//    });
+//}
