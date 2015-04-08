@@ -113,8 +113,15 @@ class KPIController {
             rep.managerName = it.columns["supervisor"].name
             rep.managerId = it.columns["supervisor"].internalid
             rep.startDate = it.columns["hiredate"]
-            rep.birthDay = it.columns["birthdate"]
 
+            def birthDate = null
+            String birthDateString = it.columns["birthdate"]
+
+            if (birthDateString) {
+                birthDate = Date.parse("M/dd/yyyy", birthDateString).format("M/d")
+            }
+
+            rep.birthDay = birthDate
 
             salesReps << rep
         }

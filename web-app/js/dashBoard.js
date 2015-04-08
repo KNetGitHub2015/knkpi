@@ -1,4 +1,4 @@
-function dashBoardInit(managers, salesReps) {
+function dashBoardInit(managers, salesReps, scoreCardUrl) {
 
     for (var id in managers) {
         if (managers.hasOwnProperty(id)) {
@@ -7,7 +7,7 @@ function dashBoardInit(managers, salesReps) {
             var managerTotalDiv = $('#manager' + managerTotal.id + ' > thead');
             managerTotalDiv.append(managerRow);
 
-            var $managerTableData = "<td class='repName managerName'>Team: " + managerTotal.name + "</td><td class='calls'>" + managerTotal.totalCalls + "</td><td>" + managerTotal.totalRevenueAttainment + "</td><td>" + managerTotal.totalDemos + "</td><td>" + managerTotal.totalPipelineManagement + "</td><td>" + (managerTotal.totalClosingPercentage * 100).toFixed(2);
+            var $managerTableData = "<td class='repName managerName'>Team: " + managerTotal.name + "</td><td class='calls'>" + managerTotal.totalCalls + "</td><td>$" + managerTotal.totalRevenueAttainment.formatMoney(2, ".", ",") + "</td><td>" + managerTotal.totalDemos + "</td><td>$" + managerTotal.totalPipelineManagement.formatMoney(2, ".", ",") + "</td><td>" + (managerTotal.totalClosingPercentage * 100).toFixed(2);
             +"%</td>";
             $("#manager" + managerTotal.id + " > thead").append($managerTableData);
 
@@ -23,11 +23,13 @@ function dashBoardInit(managers, salesReps) {
             var managerDiv = $('#manager' + rep.managerId + ' > tbody');
             managerDiv.append($repRow);
 
-            var $tableData = "<td class='repName'><a href='/knkpi/KPI/scoreCard?repId=" + rep.repId + "'>" + rep.repName + "</a></td><td class='calls'>" + rep.calls + "</td><td>" + rep.revenueAttainment + "</td><td>" + rep.demos + "</td><td>" + rep.pipelineManagement + "</td><td>" + (rep.closingPercentage * 100).toFixed(2);
+            var $tableData = "<td class='repName'><a href='" + scoreCardUrl + "?repId=" + rep.repId + "'>" + rep.repName + "</a></td><td class='calls'>" + rep.calls + "</td><td>$" + rep.revenueAttainment.formatMoney(2, ".", ",") + "</td><td>" + rep.demos + "</td><td>$" + rep.pipelineManagement.formatMoney(2, ".", ",") + "</td><td>" + (rep.closingPercentage * 100).toFixed(2);
             +"%</td>";
             $("#rep" + rep.repId + "").append($tableData);
         }
     }
+
+
 
     $(document).ready(function () {
 //        $.ajax({
@@ -64,6 +66,17 @@ function dashBoardInit(managers, salesReps) {
 //    });
 
 }
+
+Number.prototype.formatMoney = function(c, d, t){
+    var n = this,
+        c = isNaN(c = Math.abs(c)) ? 2 : c,
+        d = d == undefined ? "." : d,
+        t = t == undefined ? "," : t,
+        s = n < 0 ? "-" : "",
+        i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
+        j = (j = i.length) > 3 ? j % 3 : 0;
+    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+};
 
 
 

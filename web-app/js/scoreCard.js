@@ -37,20 +37,25 @@ function updateScoreCard(data, dateFilter) {
 
     $tableId = $("#repStatsTable > tbody");
 
+    var callGrade = grabGrade(rep.calls, callSetting);
     var callsCalc = ((rep.calls / (callSetting["A"] * metricMultiplier)) * 100).toFixed(2);
-    $callData = "<tr><td>Calls</td><td>" + rep.calls + "</td><td>" + (callSetting["A"] * metricMultiplier) + "</td><td>" + callsCalc + "%</td></tr>";
+    $callData = "<tr><td>Calls</td><td>" + rep.calls + "</td><td>" + (callSetting["A"] * metricMultiplier) + "</td><td>" + callsCalc + "%</td><td>" + callGrade + "</td></tr>";
 
+    var revenueGrade = grabGrade(rep.revenueAttainment, revenueSetting);
     var revenueCalc = ((rep.revenueAttainment / (revenueSetting["A"] * metricMultiplier)) * 100).toFixed(2);
-    $revenueData = "<tr><td>Revenue</td><td>" + rep.revenueAttainment + "</td><td>" + (revenueSetting["A"] * metricMultiplier) + "</td><td>" + revenueCalc + "%</td></tr>";
+    $revenueData = "<tr><td>Revenue</td><td>$" + rep.revenueAttainment.formatMoney(2, ".", ",") + "</td><td>$" + (revenueSetting["A"] * metricMultiplier).formatMoney(2, ".", ",") + "</td><td>" + revenueCalc + "%</td><td>" + revenueGrade + "</td></tr>";
 
+    var demoGrade = grabGrade(rep.demos, demoSetting);
     var demoCalc = ((rep.demos / (demoSetting["A"] * metricMultiplier)) * 100).toFixed(2);
-    $demoData = "<tr><td>Demo</td><td>" + rep.demos + "</td><td>" + (demoSetting["A"] * metricMultiplier) + "</td><td>" + demoCalc + "%</td></tr>";
+    $demoData = "<tr><td>Demo</td><td>" + rep.demos + "</td><td>" + (demoSetting["A"] * metricMultiplier) + "</td><td>" + demoCalc + "%</td><td>" + demoGrade + "</td></tr>";
 
+    var pipelineGrade = grabGrade(rep.pipelineManagement, pipelineSetting);
     var pipelineCalc = ((rep.pipelineManagement / (pipelineSetting["A"] * metricMultiplier)) * 100).toFixed(2);
-    $pipelineData = "<tr><td>Pipeline</td><td>" + rep.pipelineManagement + "</td><td>" + (pipelineSetting["A"] * metricMultiplier) + "</td><td>" + pipelineCalc + "%</td></tr>";
+    $pipelineData = "<tr><td>Pipeline</td><td>$" + rep.pipelineManagement.formatMoney(2, ".", ",") + "</td><td>$" + (pipelineSetting["A"] * metricMultiplier).formatMoney(2, ".", ",") + "</td><td>" + pipelineCalc + "%</td><td>" + pipelineGrade + "</td></tr>";
 
+    var closingGrade = grabGrade(rep.closingPercentage, closingSetting);
     var closingCalc = ((rep.closingPercentage / (closingSetting["A"] * metricMultiplier)) * 100).toFixed(2);
-    $closingData = "<tr><td>Closing</td><td>" + (rep.closingPercentage * 100).toFixed(2) + "%</td><td>" + (closingSetting["A"] * metricMultiplier) + "%</td><td>" + closingCalc + "%</td></tr>";
+    $closingData = "<tr><td>Closing</td><td>" + (rep.closingPercentage * 100).toFixed(2) + "%</td><td>" + ((closingSetting["A"] * metricMultiplier) * 100).toFixed(2) + "%</td><td>" + closingCalc + "%</td><td>" + closingGrade + "</td></tr>";
 
     $allData = $callData + $revenueData + $demoData + $pipelineData + $closingData
 
@@ -71,6 +76,32 @@ function redirectedRep(repId) {
 function getDateFilter() {
     return $("#duration:checked").val();
 }
+
+function grabGrade(repValue, metrics) {
+    var result = "";
+    $.each(metrics, function(k, v) {
+        if (repValue >= v) {
+            result = k;
+            return (false);
+        } else if (k == "F" && repValue <= v) {
+            result = k;
+            return (false);
+        }
+    });
+
+    return result;
+}
+
+Number.prototype.formatMoney = function(c, d, t){
+    var n = this,
+        c = isNaN(c = Math.abs(c)) ? 2 : c,
+        d = d == undefined ? "." : d,
+        t = t == undefined ? "," : t,
+        s = n < 0 ? "-" : "",
+        i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
+        j = (j = i.length) > 3 ? j % 3 : 0;
+    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+};
 
 
 //TODO: Need to use this to fix the dateFilter switch bug

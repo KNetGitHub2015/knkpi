@@ -47,7 +47,7 @@
             <label class="repLabels" for="repStartDate">Start Date:</label>
             <span id="repStartDate" class="infoFields"></span>
 
-            <label class="repLabels" for="repBirthDate">Birth Date:</label>
+            <label class="repLabels" for="repBirthDate">Birth Day:</label>
             <span id="repBirthDate" class="infoFields"></span>
         </div>
 
@@ -77,7 +77,7 @@
         <table id="repStatsTable" class="teamTable">
             <thead>
             <tr>
-                <td>KPI</td><td>Value</td><td>Measure</td><td>Score</td>
+                <td>KPI</td><td>Value</td><td>Measure</td><td>Score</td><td>Grade</td>
             </tr>
             </thead>
             <tbody>

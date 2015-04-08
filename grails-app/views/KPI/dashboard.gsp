@@ -47,7 +47,8 @@
     </div>
 </div>
 <jq:jquery>
-    dashBoardInit(${raw(managersJson)}, ${raw(salesReps)});
+    var scoreCardUrl = "${createLink(controller: 'KPI', action: 'scoreCard')}";
+    dashBoardInit(${raw(managersJson)}, ${raw(salesReps)}, scoreCardUrl);
 </jq:jquery>
 </body>
 </html>

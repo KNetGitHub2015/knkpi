@@ -12,6 +12,7 @@
 		<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
 		<link rel="apple-touch-icon" href="${assetPath(src: 'apple-touch-icon.png')}">
 		<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
   		<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>
         <link rel="stylesheet" href="${resource(dir: 'css', file: 'kpi.css')}" type="text/css">
