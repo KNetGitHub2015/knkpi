@@ -6,12 +6,6 @@ class Setting {
     String searchesUrl
     String employeesUrl
 
-    String revenueSetting
-    String callSetting
-    String demoSetting
-    String pipelineSetting
-    String closingSetting
-
     static constraints = {
     }
 }

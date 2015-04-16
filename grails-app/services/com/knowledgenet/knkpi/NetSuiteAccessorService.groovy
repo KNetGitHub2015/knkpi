@@ -43,7 +43,7 @@ class NetSuiteAccessorService {
         return result
     }
 
-    def getEmployees(String repId) {
+    def getEmployees() {
         def result = null
         log.info("Getting Employees...")
         HTTPBuilder httpBuilder = new HTTPBuilder(Setting.findByBaseUrl(NetSuiteUtil.BASE_URL)?.baseUrl) // < lol
@@ -52,7 +52,7 @@ class NetSuiteAccessorService {
                 uri.path = "${Setting.findByBaseUrl(NetSuiteUtil.BASE_URL)?.employeesUrl}"
                 headers."${AUTH_HEADER}" = getAuthHeader()
                 requestContentType = ContentType.JSON
-                body = [repId: repId]
+                body = []
 
                 response.success = { resp, json ->
                     switch (resp.status) {

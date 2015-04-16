@@ -41,56 +41,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${settingInstance?.callSetting}">
-				<li class="fieldcontain">
-					<span id="callSetting-label" class="property-label"><g:message code="setting.callSetting.label" default="Call Setting" /></span>
-					
-						<span class="property-value" aria-labelledby="callSetting-label"><g:fieldValue bean="${settingInstance}" field="callSetting"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${settingInstance?.closingSetting}">
-				<li class="fieldcontain">
-					<span id="closingSetting-label" class="property-label"><g:message code="setting.closingSetting.label" default="Closing Setting" /></span>
-					
-						<span class="property-value" aria-labelledby="closingSetting-label"><g:fieldValue bean="${settingInstance}" field="closingSetting"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${settingInstance?.demoSetting}">
-				<li class="fieldcontain">
-					<span id="demoSetting-label" class="property-label"><g:message code="setting.demoSetting.label" default="Demo Setting" /></span>
-					
-						<span class="property-value" aria-labelledby="demoSetting-label"><g:fieldValue bean="${settingInstance}" field="demoSetting"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${settingInstance?.employeesUrl}">
 				<li class="fieldcontain">
 					<span id="employeesUrl-label" class="property-label"><g:message code="setting.employeesUrl.label" default="Employees Url" /></span>
 					
 						<span class="property-value" aria-labelledby="employeesUrl-label"><g:fieldValue bean="${settingInstance}" field="employeesUrl"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${settingInstance?.pipelineSetting}">
-				<li class="fieldcontain">
-					<span id="pipelineSetting-label" class="property-label"><g:message code="setting.pipelineSetting.label" default="Pipeline Setting" /></span>
-					
-						<span class="property-value" aria-labelledby="pipelineSetting-label"><g:fieldValue bean="${settingInstance}" field="pipelineSetting"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${settingInstance?.revenueSetting}">
-				<li class="fieldcontain">
-					<span id="revenueSetting-label" class="property-label"><g:message code="setting.revenueSetting.label" default="Revenue Setting" /></span>
-					
-						<span class="property-value" aria-labelledby="revenueSetting-label"><g:fieldValue bean="${settingInstance}" field="revenueSetting"/></span>
 					
 				</li>
 				</g:if>

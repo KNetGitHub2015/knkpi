@@ -28,13 +28,9 @@
 					
 						<g:sortableColumn property="baseUrl" title="${message(code: 'setting.baseUrl.label', default: 'Base Url')}" />
 					
-						<g:sortableColumn property="callSetting" title="${message(code: 'setting.callSetting.label', default: 'Call Setting')}" />
-					
-						<g:sortableColumn property="closingSetting" title="${message(code: 'setting.closingSetting.label', default: 'Closing Setting')}" />
-					
-						<g:sortableColumn property="demoSetting" title="${message(code: 'setting.demoSetting.label', default: 'Demo Setting')}" />
-					
 						<g:sortableColumn property="employeesUrl" title="${message(code: 'setting.employeesUrl.label', default: 'Employees Url')}" />
+					
+						<g:sortableColumn property="searchesUrl" title="${message(code: 'setting.searchesUrl.label', default: 'Searches Url')}" />
 					
 					</tr>
 				</thead>
@@ -46,13 +42,9 @@
 					
 						<td>${fieldValue(bean: settingInstance, field: "baseUrl")}</td>
 					
-						<td>${fieldValue(bean: settingInstance, field: "callSetting")}</td>
-					
-						<td>${fieldValue(bean: settingInstance, field: "closingSetting")}</td>
-					
-						<td>${fieldValue(bean: settingInstance, field: "demoSetting")}</td>
-					
 						<td>${fieldValue(bean: settingInstance, field: "employeesUrl")}</td>
+					
+						<td>${fieldValue(bean: settingInstance, field: "searchesUrl")}</td>
 					
 					</tr>
 				</g:each>

@@ -15,8 +15,7 @@ class KPIController {
             dateFilter = "thismonth"
         }
 
-        log.info("Pulling Employees...")
-        List<SalesRep> salesReps = getEmployees()
+        List<SalesRep> salesReps = SalesRep.getAll()
 
         log.info("Pulling Completed Demos for date range: ${dateFilter}.")
         def demoData = netSuiteAccessorService.getSavedSearch(NetSuiteUtil.DEMO_COMPLETED_SEARCH, NetSuiteUtil.DEMO_COMPLETED_SEARCH_JOIN, NetSuiteUtil.DEMO_COMPLETED_SEARCH_DATE, dateFilter, null, null)
@@ -95,63 +94,20 @@ class KPIController {
     }
 
     def scoreCard(String repId) {
-        List<SalesRep> salesReps = getEmployees(null)
+        //TODO: Can probably strip this down to only the fields we need
+        List<SalesRep> salesReps = SalesRep.getAll()
         List selectReps = salesReps.asList()
 
         [salesReps: selectReps, repId: repId]
     }
 
-    def getEmployees(String repId) {
-        List<SalesRep> salesReps = []
-        def employees = netSuiteAccessorService.getEmployees(repId)
-
-        employees.each {
-            SalesRep rep = new SalesRep()
-            rep.repId = it.id
-            rep.repName = it.columns["entityid"]
-            rep.title = it.columns["title"]
-            rep.managerName = it.columns["supervisor"].name
-            rep.managerId = it.columns["supervisor"].internalid
-            rep.startDate = it.columns["hiredate"]
-
-            def birthDate = null
-            String birthDateString = it.columns["birthdate"]
-
-            if (birthDateString) {
-                birthDate = Date.parse("M/dd/yyyy", birthDateString).format("M/d")
-            }
-
-            rep.birthDay = birthDate
-
-            salesReps << rep
-        }
-
+    def getEmployee(String repId) {
+        List<SalesRep> salesReps = SalesRep.findAllByRepId(repId)
         return salesReps
-    }
-
-    def getCallData() {
-        def viewInfo = new JsonSlurper().parseText(request.JSON.toString())
-        String dateFilter = viewInfo.dateFilter
-        List<SalesRep> salesReps = []
-        bindData(salesReps, viewInfo.salesReps)
-
-        if (!dateFilter) {
-            dateFilter = "thismonth"
-        }
-
-        log.info("Pulling Logged Calls for date range: ${dateFilter}.")
-        def nsCallData = netSuiteAccessorService.getSavedSearch(NetSuiteUtil.LOGGED_CALLS_SEARCH, null, NetSuiteUtil.LOGGED_CALLS_SEARCH_DATE, dateFilter)
-        dataMassageService.setLoggedCallsFields(salesReps, nsCallData)
-
-        def salesRepsJson = salesReps as JSON
-
-        [success: true, salesReps: salesReps.toString()]
-
     }
 
     def getScoreCardRepData(String repId, String dateFilter) {
         SalesRep selectedRep = new SalesRep()
-        Setting setting = Setting.findByBaseUrl(NetSuiteUtil.BASE_URL)
 
         if (!dateFilter) {
             dateFilter = "thismonth"
@@ -159,7 +115,7 @@ class KPIController {
 
         if (repId?.toInteger() > 0) {
             //This is a list because I wanted the existing dataMassageService methods to work with one or many reps.
-            List<SalesRep> selectedReps = getEmployees(repId)
+            List<SalesRep> selectedReps = getEmployee(repId)
 
             //TODO: This can be pulled out into a method that the dashboard can also use. ...This project started so clean, then deadlines killed everything. :(
             log.info("Pulling Completed Demos for date range: ${dateFilter}.")
@@ -188,17 +144,30 @@ class KPIController {
             selectedRep = selectedReps.find {
                 it.repId = repId
             }
-
         }
-
-        selectedRep.callSetting = setting.callSetting
-        selectedRep.demoSetting = setting.demoSetting
-        selectedRep.closingSetting = setting.closingSetting
-        selectedRep.pipelineSetting = setting.pipelineSetting
-        selectedRep.revenueSetting = setting.revenueSetting
 
         def selectedRepJson = selectedRep as JSON
 
         render selectedRepJson.toString()
     }
+
+//    def getCallData() {
+//        def viewInfo = new JsonSlurper().parseText(request.JSON.toString())
+//        String dateFilter = viewInfo.dateFilter
+//        List<SalesRep> salesReps = []
+//        bindData(salesReps, viewInfo.salesReps)
+//
+//        if (!dateFilter) {
+//            dateFilter = "thismonth"
+//        }
+//
+//        log.info("Pulling Logged Calls for date range: ${dateFilter}.")
+//        def nsCallData = netSuiteAccessorService.getSavedSearch(NetSuiteUtil.LOGGED_CALLS_SEARCH, null, NetSuiteUtil.LOGGED_CALLS_SEARCH_DATE, dateFilter)
+//        dataMassageService.setLoggedCallsFields(salesReps, nsCallData)
+//
+//        def salesRepsJson = salesReps as JSON
+//
+//        [success: true, salesReps: salesReps.toString()]
+//
+//    }
 }
