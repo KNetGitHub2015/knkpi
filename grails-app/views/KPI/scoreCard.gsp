@@ -74,7 +74,7 @@
             %{--<span id="closingPercentageAmount"></span>--}%
         %{--</div>--}%
 
-        <table id="repStatsTable" class="teamTable">
+        <table id="repStatsTable" class="knTable">
             <thead>
             <tr>
                 <td>KPI</td><td>Value</td><td>Measure</td><td>Score</td><td>Grade</td>

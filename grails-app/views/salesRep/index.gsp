@@ -21,40 +21,27 @@
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<table>
+			<table class="knTable">
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="birthDay" title="${message(code: 'salesRep.birthDay.label', default: 'Birth Day')}" />
+						<g:sortableColumn property="repName" title="${message(code: 'salesRep.repName.label', default: 'Rep Name')}" />
 					
-						<g:sortableColumn property="callSetting" title="${message(code: 'salesRep.callSetting.label', default: 'Call Setting')}" />
+						<g:sortableColumn property="title" title="${message(code: 'salesRep.title.label', default: 'Title')}" />
 					
-						<g:sortableColumn property="calls" title="${message(code: 'salesRep.calls.label', default: 'Calls')}" />
-					
-						<g:sortableColumn property="closingPercentage" title="${message(code: 'salesRep.closingPercentage.label', default: 'Closing Percentage')}" />
-					
-						<g:sortableColumn property="closingSetting" title="${message(code: 'salesRep.closingSetting.label', default: 'Closing Setting')}" />
-					
-						<g:sortableColumn property="demoSetting" title="${message(code: 'salesRep.demoSetting.label', default: 'Demo Setting')}" />
-					
+						<g:sortableColumn property="managerName" title="${message(code: 'salesRep.managerName.label', default: 'Manager')}" />
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${salesRepInstanceList}" status="i" var="salesRepInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${salesRepInstance.id}">${fieldValue(bean: salesRepInstance, field: "birthDay")}</g:link></td>
+						<td><g:link action="show" id="${salesRepInstance.id}">${fieldValue(bean: salesRepInstance, field: "repName")}</g:link></td>
 					
-						<td>${fieldValue(bean: salesRepInstance, field: "callSetting")}</td>
+						<td>${fieldValue(bean: salesRepInstance, field: "title")}</td>
 					
-						<td>${fieldValue(bean: salesRepInstance, field: "calls")}</td>
-					
-						<td>${fieldValue(bean: salesRepInstance, field: "closingPercentage")}</td>
-					
-						<td>${fieldValue(bean: salesRepInstance, field: "closingSetting")}</td>
-					
-						<td>${fieldValue(bean: salesRepInstance, field: "demoSetting")}</td>
-					
+						<td>${fieldValue(bean: salesRepInstance, field: "managerName")}</td>
 					</tr>
 				</g:each>
 				</tbody>

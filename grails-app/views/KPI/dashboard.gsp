@@ -28,7 +28,7 @@
     <div id="teamOverview" class="tableData">
         <g:each var="manager" in="${managers}" status="i" >
             <div class="expandableTable">
-                <table id="manager${manager.id}" class="teamTable">
+                <table id="manager${manager.id}" class="knTable">
                     <thead>
                         <tr>
                             <td class="repName">name</td>

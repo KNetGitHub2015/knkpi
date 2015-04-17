@@ -19,7 +19,7 @@
 		<g:layoutHead/>
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="/knkpi/KPI/dashboard"><image src="${resource(dir: 'images', file: 'kn.png')}" alt="KPI"/></a></div>
+		<div id="grailsLogo" role="banner"><a href="${createLink(uri: "/")}"><image src="${resource(dir: 'images', file: 'kn.png')}" alt="KPI"/></a></div>
 
     <g:layoutBody/>
 		<div class="footer" role="contentinfo"><p class="copyright">&copy; ${new Date().format("yyyy")} Knowledgenet. All rights reserved</p></div>
