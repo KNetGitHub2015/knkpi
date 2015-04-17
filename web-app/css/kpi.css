@@ -155,6 +155,14 @@ a:visited {
     color: #ffffff;
 }
 
+.nav a:visited {
+    color: #666666;
+}
+
+.button a:visited {
+    color: #666666;
+}
+
 .pagination .step {
     color: #000000;
 }
@@ -169,6 +177,16 @@ a:visited {
 
 .nav {
     background-color: #ffffff;
+}
+
+.property-list {
+    background-color: #000;
+    color: #fff;
+}
+
+.form {
+    background-color: #000;
+
 }
 
 h1 {
