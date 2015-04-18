@@ -22,6 +22,7 @@ function getSavedSearch(datain) {
         filters[0] = new nlobjSearchFilter(datain.dateFieldId, joiner, 'within', datain.dateFilter);
 
         if (repId > 0) {
+            nlapiLogExecution('DEBUG', 'Found Rep:', "Rep Dearch Field: " + datain.repFieldId + ", Rep Id: " + repId);
             filters[1] = new nlobjSearchFilter(datain.repFieldId, null, 'equalto', repId);
         }
 

@@ -20,7 +20,12 @@
         <div id="filter">
             <g:radioGroup name="duration" id="duration" value="thismonth"
                           labels="['MTD', 'QTD', 'YTD']"
-                          values="['thismonth', 'thisfiscalquarter', 'thisyear']">
+                          values="['thismonth', 'thisfiscalquarter', 'thisyear']"
+                          onchange="showSpinner();${remoteFunction(
+                                  controller: 'KPI',
+                                  action: 'getScoreCardRepData',
+                                  params: '\'repId=\' + getSalesRepValue() + \'&dateFilter=\' + getDateFilter()',
+                                  onSuccess: 'updateScoreCard(data, getDateFilter())')}">
                 <p class="radioGroup">${it.label} ${it.radio}</p>
             </g:radioGroup>
         </div> <br>

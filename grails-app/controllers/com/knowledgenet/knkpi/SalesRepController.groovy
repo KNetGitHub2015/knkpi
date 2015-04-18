@@ -20,9 +20,9 @@ class SalesRepController {
         respond salesRepInstance
     }
 
-    def create() {
-        respond new SalesRep(params)
-    }
+//    def create() {
+//        respond new SalesRep(params)
+//    }
 
     @Transactional
     def save(SalesRep salesRepInstance) {

@@ -18,6 +18,10 @@ class NetSuiteUtil {
     public static final String DEMO_COMPLETED_SEARCH_DATE = "custrecord34"
     public static final String DEMO_COMPLETED_SEARCH_REP = "salesrep"
 
+    public static final String PIPELINE_SETTING_SEARCH = "3788"
+    public static final String PIPELINE_SETTING_SEARCH_DATE = ""
+    public static final String PIPELINE_SETTING_SEARCH_REP = "entity"
+
     public static final String BASE_URL = "https://rest.netsuite.com/app/site/hosting/"
 
 }

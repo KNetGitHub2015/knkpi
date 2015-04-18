@@ -6,9 +6,6 @@
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
-        <div class="message" role="alert">
-            <g:message code="salesRep.create.alert" />
-        </div>
 		<a href="#create-salesRep" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>

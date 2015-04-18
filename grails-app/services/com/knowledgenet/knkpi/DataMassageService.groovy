@@ -82,5 +82,16 @@ class DataMassageService {
         return retVal
     }
 
-    public SalesRep
+    public void clearKPI(List<SalesRep> reps) {
+        if (reps) {
+            reps.each {
+                it.calls = 0
+                it.pipelineManagement = 0
+                it.demos = 0
+                it.closingPercentage = 0
+                it.revenueAttainment = 0
+                it.forecastingAccuracy = 0
+            }
+        }
+    }
 }
