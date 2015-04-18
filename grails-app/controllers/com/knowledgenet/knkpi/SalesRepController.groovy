@@ -1,11 +1,12 @@
 package com.knowledgenet.knkpi
 
-
+import org.springframework.security.access.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
+@Secured([Role.ADMIN])
 class SalesRepController {
     def netSuiteAccessorService
 

@@ -7,7 +7,7 @@ class UrlMappings {
             }
         }
 
-        "/"(controller: "KPI", action: "dashboard")
+        "/"(controller: "KPI")
         "500"(view:'/error')
 	}
 }

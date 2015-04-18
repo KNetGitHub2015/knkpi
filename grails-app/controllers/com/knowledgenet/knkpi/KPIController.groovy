@@ -2,10 +2,27 @@ package com.knowledgenet.knkpi
 
 import grails.converters.JSON
 import groovy.json.JsonSlurper
+import org.springframework.security.access.annotation.Secured
 
+@Secured([Role.ADMIN])
 class KPIController {
     def netSuiteAccessorService
     def dataMassageService
+
+    @Secured([Role.USER])
+    def index() {
+        if (request.isUserInRole(Role.ADMIN)) {
+            forward action: 'admin'
+        } else {
+            forward action: 'user'
+        }
+    }
+
+    def admin() {
+    }
+
+    def user() {
+    }
 
     def dashboard(String dateFilter) {
         if (!dateFilter) {

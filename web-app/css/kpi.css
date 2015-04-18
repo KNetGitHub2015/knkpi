@@ -29,10 +29,26 @@ body {
     background-color: rgba(38,38,38, .9);
 }
 
+#logoutLink {
+    float: right;
+}
+
 #wrapper {
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
     background-color: rgba(38,38,38, .9);
     align-content: center;
+}
+
+#topBar h1 {
+    padding: 10px 20px;
+}
+
+#content {
+    padding: 10px 20px;
+}
+
+.links {
+    list-style-type: none;
 }
 
 #filter {
