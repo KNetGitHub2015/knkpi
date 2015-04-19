@@ -8,12 +8,17 @@ import org.springframework.security.access.annotation.Secured
 class KPIController {
     def netSuiteAccessorService
     def dataMassageService
+    def springSecurityService
 
     @Secured([Role.USER])
     def index() {
         if (request.isUserInRole(Role.ADMIN)) {
             forward action: 'admin'
         } else {
+            SalesRep salesRep = getUserSalesRep()
+            if (salesRep) {
+                redirect controller: "KPI", action: "scoreCard", params: [repId: salesRep.repId]
+            }
             forward action: 'user'
         }
     }
@@ -101,12 +106,18 @@ class KPIController {
         [salesReps: salesRepsJson.toString(), managers: managers, managersJson: managersJson.toString(), dateFilter: dateFilter]
     }
 
+    @Secured([Role.USER])
     def scoreCard(String repId) {
-        //TODO: Can probably strip this down to only the fields we need
-        List<SalesRep> salesReps = SalesRep.getAll()
-        List selectReps = salesReps.asList()
+        List<SalesRep> salesReps
 
-        [salesReps: selectReps, repId: repId]
+        if (!request.isUserInRole(Role.ADMIN)) {
+            salesReps = [getUserSalesRep()]
+        } else {
+            //TODO: Can probably strip this down to only the fields we need
+            salesReps = SalesRep.getAll()
+        }
+
+        [salesReps: salesReps, repId: repId]
     }
 
     def getEmployee(String repId) {
@@ -119,8 +130,16 @@ class KPIController {
 //        def pipeLineSettings = netSuiteAccessorService.getSavedSearch()
 //    }
 
+    @Secured([Role.USER])
     def getScoreCardRepData(String repId, String dateFilter) {
         SalesRep selectedRep = new SalesRep()
+
+        if (!request.isUserInRole(Role.ADMIN)) {
+            SalesRep loggedInRep = getUserSalesRep()
+            if (!loggedInRep.repId || loggedInRep.repId != repId) {
+                return render([error: "Invalid rep id"] as JSON)
+            }
+        }
 
         if (!dateFilter) {
             dateFilter = "thismonth"
@@ -169,4 +188,14 @@ class KPIController {
         render selectedRepJson.toString()
     }
 
+    private SalesRep getUserSalesRep() {
+        SalesRep retVal = null
+
+        User user = springSecurityService.currentUser as User
+        if (user) {
+            retVal = SalesRep.findByUser(user)
+        }
+
+        return retVal
+    }
 }
