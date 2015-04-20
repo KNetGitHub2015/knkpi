@@ -17,6 +17,7 @@
             <li><g:link controller="KPI" action="dashboard">Dashboard</g:link></li>
             <li><g:link controller="salesRep" action="index">Employees</g:link></li>
             <li><g:link controller="setting" action="index">Settings</g:link></li>
+            <li><g:link controller="user" action="userSearch">Users</g:link></li>
         </ul>
     </div>
 </div>

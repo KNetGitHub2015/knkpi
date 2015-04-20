@@ -136,6 +136,10 @@ grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.knowledgen
 grails.plugin.springsecurity.authority.className = 'com.knowledgenet.knkpi.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':                              ['ROLE_USER'],
+    '/user/**':                       ['ROLE_ADMIN'],
+    '/role/**':                       ['ROLE_ADMIN'],
+    '/securityInfo/**':               ['ROLE_ADMIN'],
+    '/registrationCode/**':           ['ROLE_ADMIN'],
 	'/index':                         ['permitAll'],
 	'/index.gsp':                     ['permitAll'],
 	'/assets/**':                     ['permitAll'],
