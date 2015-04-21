@@ -4,7 +4,7 @@ import grails.converters.JSON
 import groovy.json.JsonSlurper
 import org.springframework.security.access.annotation.Secured
 
-@Secured([Role.ADMIN])
+@Secured([Role.ADMIN, Role.MANAGER])
 class KPIController {
     def netSuiteAccessorService
     def dataMassageService
@@ -12,7 +12,7 @@ class KPIController {
 
     @Secured([Role.USER])
     def index() {
-        if (request.isUserInRole(Role.ADMIN)) {
+        if (request.isUserInRole(Role.ADMIN) || request.isUserInRole(Role.MANAGER)) {
             forward action: 'admin'
         } else {
             SalesRep salesRep = getUserSalesRep()
@@ -110,7 +110,7 @@ class KPIController {
     def scoreCard(String repId) {
         List<SalesRep> salesReps
 
-        if (!request.isUserInRole(Role.ADMIN)) {
+        if (!request.isUserInRole(Role.ADMIN) && !request.isUserInRole(Role.MANAGER)) {
             salesReps = [getUserSalesRep()]
         } else {
             //TODO: Can probably strip this down to only the fields we need
@@ -134,7 +134,7 @@ class KPIController {
     def getScoreCardRepData(String repId, String dateFilter) {
         SalesRep selectedRep = new SalesRep()
 
-        if (!request.isUserInRole(Role.ADMIN)) {
+        if (!request.isUserInRole(Role.ADMIN) && !request.isUserInRole(Role.MANAGER)) {
             SalesRep loggedInRep = getUserSalesRep()
             if (!loggedInRep.repId || loggedInRep.repId != repId) {
                 return render([error: "Invalid rep id"] as JSON)
