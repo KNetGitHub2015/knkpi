@@ -13,6 +13,9 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				<g:if test="${!salesRepInstance.user}">
+					<li><g:link class="create" action="createUser" params="[id: salesRepInstance.id]">Create User</g:link></li>
+				</g:if>
 				%{--<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>--}%
 			</ul>
 		</div>
@@ -186,6 +189,19 @@
 						<span class="property-value" aria-labelledby="revenueSetting-label"><g:fieldValue bean="${salesRepInstance}" field="revenueSetting"/></span>
 					
 				</li>
+				</g:if>
+
+				<g:if test="${salesRepInstance?.user}">
+					<li class="fieldcontain">
+						<span id="user-label" class="property-label"><g:message code="salesRep.user.label" default="User" /></span>
+
+						<span class="property-value" aria-labelledby="user-label">
+							<g:link controller="user" action="edit" params="[id: salesRepInstance.user.id]">
+								<g:fieldValue bean="${salesRepInstance}" field="user.username"/>
+							</g:link>
+						</span>
+
+					</li>
 				</g:if>
 			
 			</ol>

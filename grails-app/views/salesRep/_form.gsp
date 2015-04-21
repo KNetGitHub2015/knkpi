@@ -46,3 +46,11 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: salesRepInstance, field: 'user', 'error')}">
+	<label for="user">
+		<g:message code="salesRep.user.label" default="User" />
+	</label>
+	<g:select name="user" from="${com.knowledgenet.knkpi.User.list()}" optionKey="id" optionValue="username" noSelection="['': '']" value="${salesRepInstance.user?.id}" />
+
+</div>
+

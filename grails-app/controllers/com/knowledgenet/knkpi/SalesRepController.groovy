@@ -48,6 +48,31 @@ class SalesRepController {
         }
     }
 
+    @Transactional
+    def saveUser(CreateUserCommand createUserCommandInstance) {
+        if (createUserCommandInstance?.hasErrors()) {
+            respond createUserCommandInstance.errors, view: 'createUser'
+            return
+        }
+
+        User user = new User(username: createUserCommandInstance.username, password: createUserCommandInstance.password)
+        user.save(flush: true)
+
+        SalesRep salesRepInstance = SalesRep.get(createUserCommandInstance.salesRepId)
+        salesRepInstance.user = user
+        salesRepInstance.save(flush: true)
+
+        UserRole.create(user, Role.findByAuthority(Role.USER), true)
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), user.id])
+                redirect salesRepInstance
+            }
+            '*' { respond salesRepInstance, [status: CREATED] }
+        }
+    }
+
     def getEmployees() {
         def employees = netSuiteAccessorService.getEmployees()
 
@@ -122,6 +147,13 @@ class SalesRepController {
             }
             '*' { render status: NO_CONTENT }
         }
+    }
+
+    def createUser(SalesRep salesRep) {
+        String username = salesRep.repName.toLowerCase().replace(' ', '.')
+        CreateUserCommand createUserCommand = new CreateUserCommand(username: username, salesRepId: salesRep.id)
+
+        [createUserCommandInstance: createUserCommand]
     }
 
     protected void notFound() {
