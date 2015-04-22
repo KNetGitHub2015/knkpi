@@ -19,10 +19,12 @@ class SalesRep {
     Double pipelineManagement = 0
     Double closingPercentage = 0
     Double forecastingAccuracy = 0
+    User user
 
     static constraints = {
         title (nullable: true)
         startDate (nullable: true)
         birthDay (nullable: true)
+        user (nullable: true)
     }
 }

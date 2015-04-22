@@ -128,3 +128,25 @@ log4j.main = {
 
     info 'grails.app'
 }
+
+
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.knowledgenet.knkpi.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.knowledgenet.knkpi.UserRole'
+grails.plugin.springsecurity.authority.className = 'com.knowledgenet.knkpi.Role'
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+	'/':                              ['ROLE_USER'],
+    '/user/**':                       ['ROLE_ADMIN'],
+    '/role/**':                       ['ROLE_ADMIN'],
+    '/securityInfo/**':               ['ROLE_ADMIN'],
+    '/registrationCode/**':           ['ROLE_ADMIN'],
+	'/index':                         ['permitAll'],
+	'/index.gsp':                     ['permitAll'],
+	'/assets/**':                     ['permitAll'],
+	'/**/js/**':                      ['permitAll'],
+	'/**/css/**':                     ['permitAll'],
+	'/**/images/**':                  ['permitAll'],
+	'/**/favicon.ico':                ['permitAll']
+]
+grails.plugin.springsecurity.logout.postOnly = false
+
