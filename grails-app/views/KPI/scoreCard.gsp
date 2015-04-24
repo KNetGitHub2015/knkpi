@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="com.knowledgenet.knkpi.Role" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="layout" content="main"/>
@@ -9,12 +9,6 @@
 </head>
 
 <body>
-<g:if test="${repId}">
-    <jq:jquery>
-        redirectedRep(${repId});
-    </jq:jquery>
-
-</g:if>
 <div id="wrapper">
     <div id="topBar">
         <div id="filter">
@@ -33,13 +27,18 @@
 
     <div id="rep">
         <form>
-            <g:select from="${salesReps}" value="${salesReps.repId.toString()}" name="salesRep" id="salesRep"
-                      optionValue="repName" optionKey="repId"
-                      onchange="showSpinner();${remoteFunction(
-                              controller: 'KPI',
-                              action: 'getScoreCardRepData',
-                              params: '\'repId=\' + this.value + \'&dateFilter=\' + getDateFilter()',
-                              onSuccess: 'updateScoreCard(data, getDateFilter())')}"/>
+            <sec:ifAnyGranted roles="${Role.ADMIN}, ${Role.MANAGER}">
+                <g:select from="${salesReps}" value="${repId}" name="salesRep" id="salesRep"
+                          optionValue="repName" optionKey="repId"
+                          onchange="showSpinner();${remoteFunction(
+                                  controller: 'KPI',
+                                  action: 'getScoreCardRepData',
+                                  params: '\'repId=\' + this.value + \'&dateFilter=\' + getDateFilter()',
+                                  onSuccess: 'updateScoreCard(data, getDateFilter())')}"/>
+            </sec:ifAnyGranted>
+            <sec:ifNotGranted roles="${Role.ADMIN}, ${Role.MANAGER}">
+                <g:hiddenField id="salesRep" name="salesRep" value="${repId}"/>
+            </sec:ifNotGranted>
         </form><span id="spinner" class="spinner" style="display:none;"></span><br>
 
         <div id="repInfo">
@@ -90,11 +89,13 @@
         </table>
     </div>
 </div>
-%{--<jq:jquery>--}%
-    %{--jQuery(document).ready(function () {--}%
-        %{--console.log("document ready");--}%
-        %{--$("input[name='duration']").change(changedFilter(${repId}));--}%
-    %{--})--}%
-%{--</jq:jquery>--}%
+<jq:jquery>
+    showSpinner();
+    ${remoteFunction(
+            controller: 'KPI',
+            action: 'getScoreCardRepData',
+            params: '\'repId=\' + ' + repId + ' + \'&dateFilter=\' + getDateFilter()',
+            onSuccess: 'updateScoreCard(data, getDateFilter())')}
+</jq:jquery>
 </body>
 </html>
