@@ -183,9 +183,10 @@ class KPIController {
             }
         }
 
-        def selectedRepJson = selectedRep as JSON
+        int totalDays = WorkDayUtil.totalDaysInMonth()
+        int dayOfMonth = WorkDayUtil.dayOfMonth()
 
-        render selectedRepJson.toString()
+        render([repData: selectedRep, totalDays: totalDays, dayOfMonth: dayOfMonth] as JSON)
     }
 
     private SalesRep getUserSalesRep() {
