@@ -45,35 +45,35 @@ function updateScoreCard(data, dateFilter) {
     var callGrade = grabGrade(callPercentage);
     var callWeightedGrade = grabGrade(callWeightedPercentage);
     var callsCalc = (callPercentage * 100).toFixed(0);
-    $callData = "<tr><td>Calls</td><td>" + rep.calls + "</td><td>" + (callSetting * metricMultiplier) + "</td><td>" + callsCalc + "%</td><td>" + callGrade + "</td><td>" + callWeightedGrade + "</td></tr>";
+    $callData = "<tr><td>Calls</td><td>" + rep.calls + "</td><td>" + (callSetting * metricMultiplier) + "</td><td>" + callsCalc + "%</td><td>" + callWeightedGrade + "</td></tr>";
 
     var revenuePercentage = calcPercentage(rep.revenueAttainment, revenueSetting, metricMultiplier);
     var revenueWeightedPercentage = calcWeightedPercentage(rep.revenueAttainment, revenueSetting, metricMultiplier, dayOfMonth, totalDays);
     var revenueGrade = grabGrade(revenuePercentage);
     var revenueWeightedGrade = grabGrade(revenueWeightedPercentage);
     var revenueCalc = (revenuePercentage * 100).toFixed(0);
-    $revenueData = "<tr><td>Revenue</td><td>$" + rep.revenueAttainment.formatMoney(0, ".", ",") + "</td><td>$" + (revenueSetting * metricMultiplier).formatMoney(0, ".", ",") + "</td><td>" + revenueCalc + "%</td><td>" + revenueGrade + "</td><td>" + revenueWeightedGrade + "</td></tr>";
+    $revenueData = "<tr><td>Revenue</td><td>$" + rep.revenueAttainment.formatMoney(0, ".", ",") + "</td><td>$" + (revenueSetting * metricMultiplier).formatMoney(0, ".", ",") + "</td><td>" + revenueCalc + "%</td><td>" + revenueWeightedGrade + "</td></tr>";
 
     var demoPercentage = calcPercentage(rep.demos, demoSetting, metricMultiplier);
     var demoWeightedPercentage = calcWeightedPercentage(rep.demos, demoSetting, metricMultiplier, dayOfMonth, totalDays);
     var demoGrade = grabGrade(demoPercentage);
     var demoWeightedGrade = grabGrade(demoWeightedPercentage);
     var demoCalc = (demoPercentage * 100).toFixed(0);
-    $demoData = "<tr><td>Demo</td><td>" + rep.demos + "</td><td>" + (demoSetting * metricMultiplier) + "</td><td>" + demoCalc + "%</td><td>" + demoGrade + "</td><td>" + demoWeightedGrade + "</td></tr>";
+    $demoData = "<tr><td>Demo</td><td>" + rep.demos + "</td><td>" + (demoSetting * metricMultiplier) + "</td><td>" + demoCalc + "%</td><td>" + demoWeightedGrade + "</td></tr>";
 
     var pipelinePercentage = calcPercentage(rep.pipelineManagement, pipelineSetting, metricMultiplier);
     var pipelineWeightedPercentage = calcWeightedPercentage(rep.pipelineManagement, pipelineSetting, metricMultiplier, dayOfMonth, totalDays);
     var pipelineGrade = grabGrade(pipelinePercentage);
     var pipelineWeightedGrade = grabGrade(pipelineWeightedPercentage);
     var pipelineCalc = (pipelinePercentage * 100).toFixed(0);
-    $pipelineData = "<tr><td>Pipeline</td><td>$" + rep.pipelineManagement.formatMoney(0, ".", ",") + "</td><td>$" + (pipelineSetting * metricMultiplier).formatMoney(0, ".", ",") + "</td><td>" + pipelineCalc + "%</td><td>" + pipelineGrade + "</td><td>" + pipelineWeightedGrade + "</td></tr>";
+    $pipelineData = "<tr><td>Pipeline</td><td>$" + rep.pipelineManagement.formatMoney(0, ".", ",") + "</td><td>$" + (pipelineSetting * metricMultiplier).formatMoney(0, ".", ",") + "</td><td>" + pipelineCalc + "%</td><td>" + pipelineWeightedGrade + "</td></tr>";
 
     var closingPercentage = calcPercentage(rep.closingPercentage, closingSetting, metricMultiplier);
     var closingWeightedPercentage = calcWeightedPercentage(rep.closingPercentage, closingSetting, metricMultiplier, dayOfMonth, totalDays);
     var closingGrade = grabGrade(closingPercentage);
     var closingWeightedGrade = grabGrade(closingWeightedPercentage);
     var closingCalc = (closingPercentage * 100).toFixed(0);
-    $closingData = "<tr><td>Closing</td><td>" + (rep.closingPercentage * 100).toFixed(0) + "%</td><td>" + ((closingSetting * metricMultiplier) * 100).toFixed(0) + "%</td><td>" + closingCalc + "%</td><td>" + closingGrade + "</td><td>" + closingWeightedGrade + "</td></tr>";
+    $closingData = "<tr><td>Closing</td><td>" + (rep.closingPercentage * 100).toFixed(0) + "%</td><td>" + ((closingSetting * metricMultiplier) * 100).toFixed(0) + "%</td><td>" + closingCalc + "%</td><td>" + closingWeightedGrade + "</td></tr>";
 
     $allData = $callData + $revenueData + $demoData + $pipelineData + $closingData;
 
