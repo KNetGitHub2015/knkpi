@@ -4,6 +4,7 @@
     <meta name="layout" content="main"/>
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'kpi.css')}" type="text/css">
     <g:javascript library="jquery" plugin="jquery"/>
+    <g:javascript src="grades.js" />
     <g:javascript src="dashBoard.js" />
     <title>KPI Dashboard</title>
 </head>
@@ -32,6 +33,7 @@
                     <thead>
                         <tr>
                             <td class="repName">name</td>
+                            <td>weighted grade</td>
                             <td>calls</td>
                             <td>revenue</td>
                             <td>demos</td>
@@ -48,7 +50,7 @@
 </div>
 <jq:jquery>
     var scoreCardUrl = "${createLink(controller: 'KPI', action: 'scoreCard')}";
-    dashBoardInit(${raw(managersJson)}, ${raw(salesReps)}, scoreCardUrl);
+    dashBoardInit(${raw(managersJson)}, ${raw(salesReps)}, scoreCardUrl, ${dayOfMonth}, ${totalDays});
 </jq:jquery>
 </body>
 </html>

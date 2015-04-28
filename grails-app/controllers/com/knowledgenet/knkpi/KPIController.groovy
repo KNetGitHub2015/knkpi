@@ -103,7 +103,10 @@ class KPIController {
         def salesRepsJson = salesReps as JSON
         def managersJson = managers as JSON
 
-        [salesReps: salesRepsJson.toString(), managers: managers, managersJson: managersJson.toString(), dateFilter: dateFilter]
+        int totalDays = WorkDayUtil.totalDaysInMonth()
+        int dayOfMonth = WorkDayUtil.dayOfMonth()
+
+        [salesReps: salesRepsJson.toString(), managers: managers, managersJson: managersJson.toString(), dateFilter: dateFilter, totalDays: totalDays, dayOfMonth: dayOfMonth]
     }
 
     @Secured([Role.USER])

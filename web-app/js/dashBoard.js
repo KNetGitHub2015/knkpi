@@ -1,4 +1,4 @@
-function dashBoardInit(managers, salesReps, scoreCardUrl) {
+function dashBoardInit(managers, salesReps, scoreCardUrl, dayOfMonth, totalDays) {
 
     for (var id in managers) {
         if (managers.hasOwnProperty(id)) {
@@ -7,7 +7,7 @@ function dashBoardInit(managers, salesReps, scoreCardUrl) {
             var managerTotalDiv = $('#manager' + managerTotal.id + ' > thead');
             managerTotalDiv.append(managerRow);
 
-            var $managerTableData = "<td class='repName managerName'>Team: " + managerTotal.name + "</td><td class='calls'>" + managerTotal.totalCalls + "</td><td>$" + managerTotal.totalRevenueAttainment.formatMoney(0, ".", ",") + "</td><td>" + managerTotal.totalDemos + "</td><td>$" + managerTotal.totalPipelineManagement.formatMoney(0, ".", ",") + "</td><td>" + (managerTotal.totalClosingPercentage * 100).toFixed(0) + "%</td>";
+            var $managerTableData = "<td class='repName managerName'>Team: " + managerTotal.name + "</td><td class='weighted-grade'></td><td class='calls'>" + managerTotal.totalCalls + "</td><td>$" + managerTotal.totalRevenueAttainment.formatMoney(0, ".", ",") + "</td><td>" + managerTotal.totalDemos + "</td><td>$" + managerTotal.totalPipelineManagement.formatMoney(0, ".", ",") + "</td><td>" + (managerTotal.totalClosingPercentage * 100).toFixed(0) + "%</td>";
             $("#manager" + managerTotal.id + " > thead").append($managerTableData);
 
         }
@@ -22,7 +22,17 @@ function dashBoardInit(managers, salesReps, scoreCardUrl) {
             var managerDiv = $('#manager' + rep.managerId + ' > tbody');
             managerDiv.append($repRow);
 
-            var $tableData = "<td class='repName'><a href='" + scoreCardUrl + "?repId=" + rep.repId + "'>" + rep.repName + "</a></td><td class='calls'>" + rep.calls + "</td><td>$" + rep.revenueAttainment.formatMoney(0, ".", ",") + "</td><td>" + rep.demos + "</td><td>$" + rep.pipelineManagement.formatMoney(0, ".", ",") + "</td><td>" + (rep.closingPercentage * 100).toFixed(0) + "%</td>";
+            var callsWeighted = calcWeightedPercentage(rep.calls, rep.callSetting, 1, dayOfMonth, totalDays);
+            var revenueWeighted = calcWeightedPercentage(rep.revenueAttainment, rep.revenueSetting, 1, dayOfMonth, totalDays);
+            var demosWeighted = calcWeightedPercentage(rep.demos, rep.demoSetting, 1, dayOfMonth, totalDays);
+            var pipelineWeighted = calcWeightedPercentage(rep.pipelineManagement, rep.pipelineSetting, 1, dayOfMonth, totalDays);
+            var closingWeighted = calcWeightedPercentage(rep.closingPercentage, rep.closingSetting, 1, dayOfMonth, totalDays);
+
+            var score = (((callsWeighted + revenueWeighted + demosWeighted +
+                        pipelineWeighted + closingWeighted) / 5));
+            var grade = grabGrade(score);
+
+            var $tableData = "<td class='repName'><a href='" + scoreCardUrl + "?repId=" + rep.repId + "'>" + rep.repName + "</a></td><td class='weighted-grade'>" + grade + "</td><td class='calls'>" + rep.calls + "</td><td>$" + rep.revenueAttainment.formatMoney(0, ".", ",") + "</td><td>" + rep.demos + "</td><td>$" + rep.pipelineManagement.formatMoney(0, ".", ",") + "</td><td>" + (rep.closingPercentage * 100).toFixed(0) + "%</td>";
             $("#rep" + rep.repId + "").append($tableData);
         }
     }
