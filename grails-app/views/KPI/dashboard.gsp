@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta name="layout" content="main"/>
+    <meta name="layout" content="knkpi"/>
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'kpi.css')}" type="text/css">
     <g:javascript library="jquery" plugin="jquery"/>
     <g:javascript src="dashBoard.js" />
@@ -36,7 +36,7 @@
                             <td>revenue</td>
                             <td>demos</td>
                             <td>pipeline</td>
-                            <td>closing percentage</td>
+                            <td>closing %</td>
                         </tr>
                     </thead>
                     <tbody>

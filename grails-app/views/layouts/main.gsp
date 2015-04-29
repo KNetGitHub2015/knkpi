@@ -15,7 +15,6 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
   		<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>
-        <link rel="stylesheet" href="${resource(dir: 'css', file: 'kpi.css')}" type="text/css">
 		<g:layoutHead/>
 	</head>
 	<body>

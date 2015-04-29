@@ -37,31 +37,38 @@ function updateScoreCard(data, dateFilter) {
 
     $tableId = $("#repStatsTable > tbody");
 
-    var callGrade = grabGrade(rep.calls, callSetting * metricMultiplier);
+    //TODO: This seems like a candidate for a function.
+    var callScore = getScore(rep.calls, callSetting * metricMultiplier);
+    var callGrade = getLetterGrade(callScore);
     var callsCalc = ((rep.calls / (callSetting * metricMultiplier)) * 100).toFixed(0);
     $callData = "<tr><td>Calls</td><td>" + rep.calls + "</td><td>" + (callSetting * metricMultiplier) + "</td><td>" + callsCalc + "%</td><td>" + callGrade + "</td></tr>";
 
-    var revenueGrade = grabGrade(rep.revenueAttainment, revenueSetting * metricMultiplier);
+    var revenueScore = getScore(rep.revenueAttainment, revenueSetting * metricMultiplier);
+    var revenueGrade = getLetterGrade(revenueScore);
     var revenueCalc = ((rep.revenueAttainment / (revenueSetting * metricMultiplier)) * 100).toFixed(0);
     $revenueData = "<tr><td>Revenue</td><td>$" + rep.revenueAttainment.formatMoney(0, ".", ",") + "</td><td>$" + (revenueSetting * metricMultiplier).formatMoney(0, ".", ",") + "</td><td>" + revenueCalc + "%</td><td>" + revenueGrade + "</td></tr>";
 
-    var demoGrade = grabGrade(rep.demos, demoSetting * metricMultiplier);
+    var demoScore = getScore(rep.demos, demoSetting * metricMultiplier);
+    var demoGrade = getLetterGrade(demoScore);
     var demoCalc = ((rep.demos / (demoSetting * metricMultiplier)) * 100).toFixed(0);
     $demoData = "<tr><td>Demo</td><td>" + rep.demos + "</td><td>" + (demoSetting * metricMultiplier) + "</td><td>" + demoCalc + "%</td><td>" + demoGrade + "</td></tr>";
 
-    var pipelineGrade = grabGrade(rep.pipelineManagement, pipelineSetting * metricMultiplier);
+    var pipelineScore = getScore(rep.pipelineManagement, pipelineSetting * metricMultiplier);
+    var pipelineGrade = getLetterGrade(pipelineScore);
     var pipelineCalc = ((rep.pipelineManagement / (pipelineSetting * metricMultiplier)) * 100).toFixed(0);
     $pipelineData = "<tr><td>Pipeline</td><td>$" + rep.pipelineManagement.formatMoney(0, ".", ",") + "</td><td>$" + (pipelineSetting * metricMultiplier).formatMoney(0, ".", ",") + "</td><td>" + pipelineCalc + "%</td><td>" + pipelineGrade + "</td></tr>";
 
-    var closingGrade = grabGrade(rep.closingPercentage, closingSetting * metricMultiplier);
+    var closingScore = getScore(rep.closingPercentage, closingSetting * metricMultiplier);
+    var closingGrade = getLetterGrade(closingScore)
     var closingCalc = ((rep.closingPercentage / (closingSetting * metricMultiplier)) * 100).toFixed(0);
     $closingData = "<tr><td>Closing</td><td>" + (rep.closingPercentage * 100).toFixed(0) + "%</td><td>" + ((closingSetting * metricMultiplier) * 100).toFixed(0) + "%</td><td>" + closingCalc + "%</td><td>" + closingGrade + "</td></tr>";
 
+    var rollupScore = (callScore + revenueScore + demoScore + pipelineScore + closingScore) / 5;
+    console.log(getLetterGrade(rollupScore));
+    $("#gradeAverage").html(getLetterGrade(rollupScore));
+
     $allData = $callData + $revenueData + $demoData + $pipelineData + $closingData
-
     $tableId.append($allData);
-
-
 }
 
 function showSpinner() {
@@ -81,24 +88,32 @@ function getSalesRepValue() {
     return $("#salesRep").val();
 }
 
-function grabGrade(repValue, metric) {
+function getLetterGrade(score) {
     var result = "F";
 
-    if (repValue) {
-        var percentMet = repValue / metric;
-
-        if (percentMet >= 0.9) {
+    if (score) {
+        if (score >= 0.9) {
             result = "A"
-        } else if (percentMet >= 0.8) {
+        } else if (score >= 0.8) {
             result = "B"
-        } else if (percentMet >= 0.7) {
+        } else if (score >= 0.7) {
             result = "C"
-        } else if (percentMet >= 0.6) {
+        } else if (score >= 0.6) {
             result = "D"
         }
     }
 
     return result;
+}
+
+function getScore(repValue, metric) {
+    var gradeScore = 0;
+
+    if (repValue) {
+        gradeScore = repValue / metric;
+    }
+
+    return gradeScore;
 }
 
 Number.prototype.formatMoney = function(c, d, t){
