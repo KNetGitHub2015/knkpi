@@ -50,7 +50,7 @@
 </div>
 <jq:jquery>
     var scoreCardUrl = "${createLink(controller: 'KPI', action: 'scoreCard')}";
-    dashBoardInit(${raw(managersJson)}, ${raw(salesReps)}, scoreCardUrl, ${dayOfMonth}, ${totalDays});
+    dashBoardInit(${raw(managersJson)}, ${raw(salesReps)}, scoreCardUrl, '${dateFilter}', ${dayOfPeriod}, ${totalDays});
 </jq:jquery>
 </body>
 </html>

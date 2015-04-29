@@ -1,4 +1,16 @@
-function dashBoardInit(managers, salesReps, scoreCardUrl, dayOfMonth, totalDays) {
+function dashBoardInit(managers, salesReps, scoreCardUrl, dateFilter, dayOfPeriod, totalDays) {
+    var metricMultiplier = 1;
+
+    switch(dateFilter) {
+        case "thisyear":
+            metricMultiplier = 12;
+            break;
+        case "thisfiscalquarter":
+            metricMultiplier = 3;
+            break;
+        default:
+            metricMultiplier = 1;
+    }
 
     for (var id in managers) {
         if (managers.hasOwnProperty(id)) {
@@ -22,11 +34,11 @@ function dashBoardInit(managers, salesReps, scoreCardUrl, dayOfMonth, totalDays)
             var managerDiv = $('#manager' + rep.managerId + ' > tbody');
             managerDiv.append($repRow);
 
-            var callsWeighted = calcWeightedPercentage(rep.calls, rep.callSetting, 1, dayOfMonth, totalDays);
-            var revenueWeighted = calcWeightedPercentage(rep.revenueAttainment, rep.revenueSetting, 1, dayOfMonth, totalDays);
-            var demosWeighted = calcWeightedPercentage(rep.demos, rep.demoSetting, 1, dayOfMonth, totalDays);
-            var pipelineWeighted = calcWeightedPercentage(rep.pipelineManagement, rep.pipelineSetting, 1, dayOfMonth, totalDays);
-            var closingWeighted = calcWeightedPercentage(rep.closingPercentage, rep.closingSetting, 1, dayOfMonth, totalDays);
+            var callsWeighted = calcWeightedPercentage(rep.calls, rep.callSetting, metricMultiplier, dayOfPeriod, totalDays);
+            var revenueWeighted = calcWeightedPercentage(rep.revenueAttainment, rep.revenueSetting, metricMultiplier, dayOfPeriod, totalDays);
+            var demosWeighted = calcWeightedPercentage(rep.demos, rep.demoSetting, metricMultiplier, dayOfPeriod, totalDays);
+            var pipelineWeighted = calcWeightedPercentage(rep.pipelineManagement, rep.pipelineSetting, metricMultiplier, dayOfPeriod, totalDays);
+            var closingWeighted = calcWeightedPercentage(rep.closingPercentage, rep.closingSetting, metricMultiplier, dayOfPeriod, totalDays);
 
             var score = (((callsWeighted + revenueWeighted + demosWeighted +
                         pipelineWeighted + closingWeighted) / 5));

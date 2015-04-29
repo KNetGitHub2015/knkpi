@@ -103,10 +103,24 @@ class KPIController {
         def salesRepsJson = salesReps as JSON
         def managersJson = managers as JSON
 
-        int totalDays = WorkDayUtil.totalDaysInMonth()
-        int dayOfMonth = WorkDayUtil.dayOfMonth()
+        int totalDays
+        int dayOfPeriod
+        switch (dateFilter) {
+            case "thisfiscalquarter":
+                totalDays = WorkDayUtil.totalDaysInQuarter()
+                dayOfPeriod = WorkDayUtil.dayOfQuarter()
+                break
+            case "thisyear":
+                totalDays = WorkDayUtil.totalDaysInYear()
+                dayOfPeriod = WorkDayUtil.dayOfYear()
+                break
+            default:
+                totalDays = WorkDayUtil.totalDaysInMonth()
+                dayOfPeriod = WorkDayUtil.dayOfMonth()
+                break
+        }
 
-        [salesReps: salesRepsJson.toString(), managers: managers, managersJson: managersJson.toString(), dateFilter: dateFilter, totalDays: totalDays, dayOfMonth: dayOfMonth]
+        [salesReps: salesRepsJson.toString(), managers: managers, managersJson: managersJson.toString(), dateFilter: dateFilter, totalDays: totalDays, dayOfPeriod: dayOfPeriod]
     }
 
     @Secured([Role.USER])
@@ -186,10 +200,24 @@ class KPIController {
             }
         }
 
-        int totalDays = WorkDayUtil.totalDaysInMonth()
-        int dayOfMonth = WorkDayUtil.dayOfMonth()
+        int totalDays
+        int dayOfPeriod
+        switch (dateFilter) {
+            case "thisfiscalquarter":
+                totalDays = WorkDayUtil.totalDaysInQuarter()
+                dayOfPeriod = WorkDayUtil.dayOfQuarter()
+                break
+            case "thisyear":
+                totalDays = WorkDayUtil.totalDaysInYear()
+                dayOfPeriod = WorkDayUtil.dayOfYear()
+                break
+            default:
+                totalDays = WorkDayUtil.totalDaysInMonth()
+                dayOfPeriod = WorkDayUtil.dayOfMonth()
+                break
+        }
 
-        render([repData: selectedRep, totalDays: totalDays, dayOfMonth: dayOfMonth] as JSON)
+        render([repData: selectedRep, totalDays: totalDays, dayOfPeriod: dayOfPeriod] as JSON)
     }
 
     private SalesRep getUserSalesRep() {

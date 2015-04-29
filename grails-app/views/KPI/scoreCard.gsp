@@ -4,7 +4,8 @@
     <meta name="layout" content="main"/>
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'kpi.css')}" type="text/css">
     <g:javascript library="jquery" plugin="jquery"/>
-    <g:javascript src="scoreCard.js"/>
+    <g:javascript src="grades.js" />
+    <g:javascript src="scoreCard.js" />
     <title>KPI Scorecard</title>
 </head>
 

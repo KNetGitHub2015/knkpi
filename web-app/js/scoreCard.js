@@ -18,7 +18,7 @@ function updateScoreCard(data, dateFilter) {
 
     rep = data.repData;
 
-    var dayOfMonth = data.dayOfMonth;
+    var dayOfPeriod = data.dayOfPeriod;
     var totalDays = data.totalDays;
 
     $("#repTitle").html(rep.title);
@@ -41,35 +41,35 @@ function updateScoreCard(data, dateFilter) {
     $tableId = $("#repStatsTable > tbody");
 
     var callPercentage = calcPercentage(rep.calls, callSetting, metricMultiplier);
-    var callWeightedPercentage = calcWeightedPercentage(rep.calls, callSetting, metricMultiplier, dayOfMonth, totalDays);
+    var callWeightedPercentage = calcWeightedPercentage(rep.calls, callSetting, metricMultiplier, dayOfPeriod, totalDays);
     var callGrade = grabGrade(callPercentage);
     var callWeightedGrade = grabGrade(callWeightedPercentage);
     var callsCalc = (callPercentage * 100).toFixed(0);
     $callData = "<tr><td>Calls</td><td>" + rep.calls + "</td><td>" + (callSetting * metricMultiplier) + "</td><td>" + callsCalc + "%</td><td>" + callWeightedGrade + "</td></tr>";
 
     var revenuePercentage = calcPercentage(rep.revenueAttainment, revenueSetting, metricMultiplier);
-    var revenueWeightedPercentage = calcWeightedPercentage(rep.revenueAttainment, revenueSetting, metricMultiplier, dayOfMonth, totalDays);
+    var revenueWeightedPercentage = calcWeightedPercentage(rep.revenueAttainment, revenueSetting, metricMultiplier, dayOfPeriod, totalDays);
     var revenueGrade = grabGrade(revenuePercentage);
     var revenueWeightedGrade = grabGrade(revenueWeightedPercentage);
     var revenueCalc = (revenuePercentage * 100).toFixed(0);
     $revenueData = "<tr><td>Revenue</td><td>$" + rep.revenueAttainment.formatMoney(0, ".", ",") + "</td><td>$" + (revenueSetting * metricMultiplier).formatMoney(0, ".", ",") + "</td><td>" + revenueCalc + "%</td><td>" + revenueWeightedGrade + "</td></tr>";
 
     var demoPercentage = calcPercentage(rep.demos, demoSetting, metricMultiplier);
-    var demoWeightedPercentage = calcWeightedPercentage(rep.demos, demoSetting, metricMultiplier, dayOfMonth, totalDays);
+    var demoWeightedPercentage = calcWeightedPercentage(rep.demos, demoSetting, metricMultiplier, dayOfPeriod, totalDays);
     var demoGrade = grabGrade(demoPercentage);
     var demoWeightedGrade = grabGrade(demoWeightedPercentage);
     var demoCalc = (demoPercentage * 100).toFixed(0);
     $demoData = "<tr><td>Demo</td><td>" + rep.demos + "</td><td>" + (demoSetting * metricMultiplier) + "</td><td>" + demoCalc + "%</td><td>" + demoWeightedGrade + "</td></tr>";
 
     var pipelinePercentage = calcPercentage(rep.pipelineManagement, pipelineSetting, metricMultiplier);
-    var pipelineWeightedPercentage = calcWeightedPercentage(rep.pipelineManagement, pipelineSetting, metricMultiplier, dayOfMonth, totalDays);
+    var pipelineWeightedPercentage = calcWeightedPercentage(rep.pipelineManagement, pipelineSetting, metricMultiplier, dayOfPeriod, totalDays);
     var pipelineGrade = grabGrade(pipelinePercentage);
     var pipelineWeightedGrade = grabGrade(pipelineWeightedPercentage);
     var pipelineCalc = (pipelinePercentage * 100).toFixed(0);
     $pipelineData = "<tr><td>Pipeline</td><td>$" + rep.pipelineManagement.formatMoney(0, ".", ",") + "</td><td>$" + (pipelineSetting * metricMultiplier).formatMoney(0, ".", ",") + "</td><td>" + pipelineCalc + "%</td><td>" + pipelineWeightedGrade + "</td></tr>";
 
     var closingPercentage = calcPercentage(rep.closingPercentage, closingSetting, metricMultiplier);
-    var closingWeightedPercentage = calcWeightedPercentage(rep.closingPercentage, closingSetting, metricMultiplier, dayOfMonth, totalDays);
+    var closingWeightedPercentage = calcWeightedPercentage(rep.closingPercentage, closingSetting, metricMultiplier, dayOfPeriod, totalDays);
     var closingGrade = grabGrade(closingPercentage);
     var closingWeightedGrade = grabGrade(closingWeightedPercentage);
     var closingCalc = (closingPercentage * 100).toFixed(0);
