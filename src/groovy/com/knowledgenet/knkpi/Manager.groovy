@@ -9,4 +9,5 @@ class Manager {
     Double totalPipelineManagement = 0
     Double totalClosingPercentage = 0
     Double totalForecastingAccuracy
+    Double quota = 0
 }

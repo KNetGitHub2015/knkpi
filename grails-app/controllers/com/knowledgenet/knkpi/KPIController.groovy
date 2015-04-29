@@ -95,6 +95,7 @@ class KPIController {
                     manager.totalDemos = manager.totalDemos + it.demos
                     manager.totalPipelineManagement = manager.totalPipelineManagement + it.pipelineManagement
                     manager.totalRevenueAttainment = manager.totalRevenueAttainment + it.revenueAttainment
+                    manager.quota = manager.quota + it.revenueSetting
                 }
             }
             manager.totalClosingPercentage = manager.totalClosingPercentage / repCount

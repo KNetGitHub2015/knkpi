@@ -34,6 +34,7 @@
                             <td class="repName">name</td>
                             <td>calls</td>
                             <td>revenue</td>
+                            <td>quota</td>
                             <td>demos</td>
                             <td>pipeline</td>
                             <td>closing percentage</td>
