@@ -103,7 +103,24 @@ class KPIController {
         def salesRepsJson = salesReps as JSON
         def managersJson = managers as JSON
 
-        [salesReps: salesRepsJson.toString(), managers: managers, managersJson: managersJson.toString(), dateFilter: dateFilter]
+        int totalDays
+        int dayOfPeriod
+        switch (dateFilter) {
+            case "thisfiscalquarter":
+                totalDays = WorkDayUtil.totalDaysInQuarter()
+                dayOfPeriod = WorkDayUtil.dayOfQuarter()
+                break
+            case "thisyear":
+                totalDays = WorkDayUtil.totalDaysInYear()
+                dayOfPeriod = WorkDayUtil.dayOfYear()
+                break
+            default:
+                totalDays = WorkDayUtil.totalDaysInMonth()
+                dayOfPeriod = WorkDayUtil.dayOfMonth()
+                break
+        }
+
+        [salesReps: salesRepsJson.toString(), managers: managers, managersJson: managersJson.toString(), dateFilter: dateFilter, totalDays: totalDays, dayOfPeriod: dayOfPeriod]
     }
 
     @Secured([Role.USER])
@@ -183,9 +200,24 @@ class KPIController {
             }
         }
 
-        def selectedRepJson = selectedRep as JSON
+        int totalDays
+        int dayOfPeriod
+        switch (dateFilter) {
+            case "thisfiscalquarter":
+                totalDays = WorkDayUtil.totalDaysInQuarter()
+                dayOfPeriod = WorkDayUtil.dayOfQuarter()
+                break
+            case "thisyear":
+                totalDays = WorkDayUtil.totalDaysInYear()
+                dayOfPeriod = WorkDayUtil.dayOfYear()
+                break
+            default:
+                totalDays = WorkDayUtil.totalDaysInMonth()
+                dayOfPeriod = WorkDayUtil.dayOfMonth()
+                break
+        }
 
-        render selectedRepJson.toString()
+        render([repData: selectedRep, totalDays: totalDays, dayOfPeriod: dayOfPeriod] as JSON)
     }
 
     private SalesRep getUserSalesRep() {

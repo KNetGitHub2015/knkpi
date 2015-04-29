@@ -97,7 +97,9 @@ thead {
 
 thead, td {
     padding: 0;
-    height: 30;
+    height: 30px;
+    vertical-align: middle;
+    line-height: 20px;
 }
 
 table tbody tr:nth-child(odd) td{
@@ -108,8 +110,16 @@ table tbody tr:nth-child(even) td{
 }
 
 table thead tr td {
-    height: 40px;
+    height: 50px;
     background-color:  #e56b29;
+}
+
+.weighted-grade {
+    text-align: center;
+}
+
+.closing-percentage {
+    text-align: center;
 }
 
 #rep {
