@@ -7,7 +7,7 @@ function dashBoardInit(managers, salesReps, scoreCardUrl, dayOfMonth, totalDays)
             var managerTotalDiv = $('#manager' + managerTotal.id + ' > thead');
             managerTotalDiv.append(managerRow);
 
-            var $managerTableData = "<td class='repName managerName'>Team: " + managerTotal.name + "</td><td class='weighted-grade'></td><td class='calls'>" + managerTotal.totalCalls + "</td><td>$" + managerTotal.totalRevenueAttainment.formatMoney(0, ".", ",") + "</td><td>" + managerTotal.totalDemos + "</td><td>$" + managerTotal.totalPipelineManagement.formatMoney(0, ".", ",") + "</td><td>" + (managerTotal.totalClosingPercentage * 100).toFixed(0) + "%</td>";
+            var $managerTableData = "<td class='repName managerName'>Team: " + managerTotal.name + "</td><td class='weighted-grade'></td><td class='calls'>" + managerTotal.totalCalls + "</td><td>$" + managerTotal.totalRevenueAttainment.formatMoney(0, ".", ",") + "</td><td>" + managerTotal.totalDemos + "</td><td>$" + managerTotal.totalPipelineManagement.formatMoney(0, ".", ",") + "</td><td class='closing-percentage'>" + (managerTotal.totalClosingPercentage * 100).toFixed(0) + "%</td>";
             $("#manager" + managerTotal.id + " > thead").append($managerTableData);
 
         }
@@ -18,7 +18,7 @@ function dashBoardInit(managers, salesReps, scoreCardUrl, dayOfMonth, totalDays)
             var rep = salesReps[repId];
             var manager = rep.managerId;
 
-            var $repRow = "<tr id='rep" + rep.repId + "'></tr>";
+            var $repRow = "<tr id='rep" + rep.repId + "' class='rep-row'></tr>";
             var managerDiv = $('#manager' + rep.managerId + ' > tbody');
             managerDiv.append($repRow);
 
@@ -32,11 +32,23 @@ function dashBoardInit(managers, salesReps, scoreCardUrl, dayOfMonth, totalDays)
                         pipelineWeighted + closingWeighted) / 5));
             var grade = grabGrade(score);
 
-            var $tableData = "<td class='repName'><a href='" + scoreCardUrl + "?repId=" + rep.repId + "'>" + rep.repName + "</a></td><td class='weighted-grade'>" + grade + "</td><td class='calls'>" + rep.calls + "</td><td>$" + rep.revenueAttainment.formatMoney(0, ".", ",") + "</td><td>" + rep.demos + "</td><td>$" + rep.pipelineManagement.formatMoney(0, ".", ",") + "</td><td>" + (rep.closingPercentage * 100).toFixed(0) + "%</td>";
+            var $tableData = "<td class='repName'><a href='" + scoreCardUrl + "?repId=" + rep.repId + "'>" + rep.repName + "</a></td><td class='weighted-grade' data-score='" + score + "'>" + grade + "</td><td class='calls'>" + rep.calls + "</td><td>$" + rep.revenueAttainment.formatMoney(0, ".", ",") + "</td><td>" + rep.demos + "</td><td>$" + rep.pipelineManagement.formatMoney(0, ".", ",") + "</td><td class='closing-percentage'>" + (rep.closingPercentage * 100).toFixed(0) + "%</td>";
             $("#rep" + rep.repId + "").append($tableData);
         }
     }
 
+    for (var managerId in managers) {
+       if (managers.hasOwnProperty(managerId)) {
+           var manager = managers[managerId];
+           var $weightedGrades = $("#manager" + manager.id + " .rep-row .weighted-grade");
+           var sum = $.makeArray($weightedGrades).reduce(function(prev, current) {
+               return prev + $(current).data('score');
+           }, 0);
+           var percentage = sum / $weightedGrades.length;
+           var finalGrade = grabGrade(percentage);
+           $('#manager' + manager.id + ' > thead .weighted-grade').html(finalGrade);
+       }
+    }
 
 
     $(document).ready(function () {

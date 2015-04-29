@@ -33,12 +33,12 @@
                     <thead>
                         <tr>
                             <td class="repName">name</td>
-                            <td>weighted grade</td>
+                            <td style="text-align: center;">weighted<br>grade</td>
                             <td>calls</td>
                             <td>revenue</td>
                             <td>demos</td>
                             <td>pipeline</td>
-                            <td>closing percentage</td>
+                            <td class="closing-percentage">closing<br>percentage</td>
                         </tr>
                     </thead>
                     <tbody>
