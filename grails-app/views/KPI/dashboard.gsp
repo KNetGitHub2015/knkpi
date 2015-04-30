@@ -33,7 +33,7 @@
                     <thead>
                         <tr>
                             <td class="repName">name</td>
-                            <td style="text-align: center;">weighted<br>grade</td>
+                            <td style="text-align: center;">grade</td>
                             <td>calls</td>
                             <td>revenue</td>
                             <td>demos</td>
