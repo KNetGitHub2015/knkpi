@@ -36,6 +36,7 @@
                             <td style="text-align: center;">grade</td>
                             <td>calls</td>
                             <td>revenue</td>
+                            <td>quota</td>
                             <td>demos</td>
                             <td>pipeline</td>
                             <td class="closing-percentage">closing<br>percentage</td>
