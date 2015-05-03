@@ -78,7 +78,7 @@ function updateScoreCard(data, dateFilter) {
     $allData = $callData + $revenueData + $demoData + $pipelineData + $closingData;
     $tableId.append($allData);
     
-    var rollupScore = (callWeightedPercentage + revenueWeightedPercentage + demoWeightedPercentage + pipelineWeightedPercentage + closingWeightedPercentage) / 5;
+    var rollupScore = rollupScores([callWeightedPercentage, revenueWeightedPercentage, demoWeightedPercentage, pipelineWeightedPercentage, closingWeightedPercentage]);
     console.log(grabGrade(rollupScore));
     $("#gradeAverage").html(grabGrade(rollupScore));
 

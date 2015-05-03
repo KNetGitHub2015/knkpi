@@ -8,6 +8,17 @@ function calcWeightedPercentage(actual, goal, multiplier, dayOfMonth, totalDays)
     return calcPercentage(actual, weightedGoal, multiplier);
 }
 
+function maxScore(score) {
+    return Math.min(score, 1);
+}
+
+function rollupScores(scores) {
+    var sum = scores.reduce(function(prev, current) {
+        return prev + maxScore(current);
+    }, 0);
+    return sum / scores.length;
+}
+
 function grabGrade(percentage) {
     var result = "F";
 

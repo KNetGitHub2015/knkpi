@@ -40,8 +40,7 @@ function dashBoardInit(managers, salesReps, scoreCardUrl, dateFilter, dayOfPerio
             var pipelineWeighted = calcWeightedPercentage(rep.pipelineManagement, rep.pipelineSetting, metricMultiplier, dayOfPeriod, totalDays);
             var closingWeighted = calcWeightedPercentage(rep.closingPercentage, rep.closingSetting, metricMultiplier, dayOfPeriod, totalDays);
 
-            var score = (((callsWeighted + revenueWeighted + demosWeighted +
-                        pipelineWeighted + closingWeighted) / 5));
+            var score = rollupScores([callsWeighted, revenueWeighted, demosWeighted, pipelineWeighted, closingWeighted]);
             var grade = grabGrade(score);
 
             var $tableData = "<td class='repName'><a href='" + scoreCardUrl + "?repId=" + rep.repId + "'>" + rep.repName + "</a></td><td class='weighted-grade' data-score='" + score + "'>" + grade + "</td><td class='calls'>" + rep.calls + "</td><td>$" + rep.revenueAttainment.formatMoney(0, ".", ",") + "</td><td>$" + rep.revenueSetting.formatMoney(0, ".", ",") + "</td><td>" + rep.demos + "</td><td>$" + rep.pipelineManagement.formatMoney(0, ".", ",") + "</td><td>" + (rep.closingPercentage * 100).toFixed(0) + "%</td>";
