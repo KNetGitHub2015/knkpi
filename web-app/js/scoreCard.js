@@ -77,11 +77,19 @@ function updateScoreCard(data, dateFilter) {
 
     $allData = $callData + $revenueData + $demoData + $pipelineData + $closingData;
     $tableId.append($allData);
-    
-    var rollupScore = (callWeightedPercentage + revenueWeightedPercentage + demoWeightedPercentage + pipelineWeightedPercentage + closingWeightedPercentage) / 5;
+
+    var kpis = [
+        {score: callWeightedPercentage, weight: kpiWeights.calls},
+        {score: revenueWeightedPercentage, weight: kpiWeights.revenue},
+        {score: demoWeightedPercentage, weight: kpiWeights.demos},
+        {score: pipelineWeightedPercentage, weight: kpiWeights.pipeline},
+        {score: closingWeightedPercentage, weight: kpiWeights.closing}
+    ];
+
+    var rollupScore = rollupScores(kpis);
+    console.log('rolled up score: ' + rollupScore);
     console.log(grabGrade(rollupScore));
     $("#gradeAverage").html(grabGrade(rollupScore));
-
 }
 
 function showSpinner() {
