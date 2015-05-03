@@ -1,3 +1,19 @@
+var kpiWeights = {
+    'calls': 0.15,
+    'revenue': 0.43,
+    'demos': 0.14,
+    'pipeline': 0.14,
+    'closing': 0.14
+};
+
+var kpiKeys = {
+    calls: 'calls',
+    revenue: 'revenue',
+    demos: 'demos',
+    pipeline: 'pipeline',
+    closing: 'closing'
+};
+
 function calcPercentage(actual, goal, multiplier) {
     return (actual / (goal * multiplier));
 }
@@ -13,10 +29,10 @@ function maxScore(score) {
 }
 
 function rollupScores(scores) {
-    var sum = scores.reduce(function(prev, current) {
-        return prev + maxScore(current);
+    var rollup = scores.reduce(function(prev, current) {
+        return prev + (maxScore(current.score) * current.weight);
     }, 0);
-    return sum / scores.length;
+    return rollup
 }
 
 function grabGrade(percentage) {
