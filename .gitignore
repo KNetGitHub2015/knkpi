@@ -30,4 +30,5 @@
 /target
 
 #workspace stuff
-.idea
+.idea/*
+*.iml

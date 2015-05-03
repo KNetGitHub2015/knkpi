@@ -84,6 +84,10 @@ body {
 
 }
 
+span {
+    line-height: 20px;
+}
+
 table {
     border-collapse: collapse;
 }
@@ -129,7 +133,18 @@ table thead tr td {
 
 #repInfo {
     color: #fff;
-    line-height: 40px;
+    float:  left;
+    padding-bottom: 20px;
+}
+
+#gradeAverage {
+    padding-right: 20px;
+    font-size: 60px;
+    text-align: center;
+    color: #000;
+    background-color: #ffffff;
+    border-radius: 2px;
+    float: left;
 }
 
 .repName {

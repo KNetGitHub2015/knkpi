@@ -1,7 +1,7 @@
 <%@ page import="com.knowledgenet.knkpi.Role" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <meta name="layout" content="main"/>
+    <meta name="layout" content="knkpi"/>
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'kpi.css')}" type="text/css">
     <g:javascript library="jquery" plugin="jquery"/>
     <g:javascript src="grades.js" />
@@ -23,7 +23,8 @@
                                   onSuccess: 'updateScoreCard(data, getDateFilter())')}">
                 <p class="radioGroup">${it.label} ${it.radio}</p>
             </g:radioGroup>
-        </div> <br>
+        </div>
+        <br>
     </div>
 
     <div id="rep">
@@ -41,21 +42,20 @@
                 <g:hiddenField id="salesRep" name="salesRep" value="${repId}"/>
             </sec:ifNotGranted>
         </form><span id="spinner" class="spinner" style="display:none;"></span><br>
-
         <div id="repInfo">
             <label class="repLabels" for="repTitle">Title:</label>
-            <span id="repTitle" class="infoFields"></span>
+            <span id="repTitle" class="infoFields"></span> <br>
 
             <label class="repLabels" for="repManager">Manager:</label>
-            <span id="repManager" class="infoFields"></span>
+            <span id="repManager" class="infoFields"></span> <br>
 
             <label class="repLabels" for="repStartDate">Start Date:</label>
-            <span id="repStartDate" class="infoFields"></span>
+            <span id="repStartDate" class="infoFields"></span> <br>
 
             <label class="repLabels" for="repBirthDate">Birth Day:</label>
             <span id="repBirthDate" class="infoFields"></span>
         </div>
-
+        <div id="gradeAverage"></div>
     </div>
 
     <div id="repStats" class="expandableTable">

@@ -76,8 +76,13 @@ function updateScoreCard(data, dateFilter) {
     $closingData = "<tr><td>Closing</td><td>" + (rep.closingPercentage * 100).toFixed(0) + "%</td><td>" + ((closingSetting * metricMultiplier) * 100).toFixed(0) + "%</td><td>" + closingCalc + "%</td><td>" + closingWeightedGrade + "</td></tr>";
 
     $allData = $callData + $revenueData + $demoData + $pipelineData + $closingData;
-
     $tableId.append($allData);
+    
+    var rollupScore = (callWeightedPercentage + revenueWeightedPercentage + demoWeightedPercentage + pipelineWeightedPercentage + closingWeightedPercentage) / 5;
+    console.log(grabGrade(rollupScore));
+    $("#gradeAverage").html(grabGrade(rollupScore));
+
+    
 
 
 }

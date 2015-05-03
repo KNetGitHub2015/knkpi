@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta name="layout" content="main"/>
+    <meta name="layout" content="knkpi"/>
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'kpi.css')}" type="text/css">
     <g:javascript library="jquery" plugin="jquery"/>
     <g:javascript src="grades.js" />
@@ -39,7 +39,7 @@
                             <td>quota</td>
                             <td>demos</td>
                             <td>pipeline</td>
-                            <td class="closing-percentage">closing<br>percentage</td>
+                            <td class="closing-percentage">closing %</td>
                         </tr>
                     </thead>
                     <tbody>
