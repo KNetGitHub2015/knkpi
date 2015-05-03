@@ -37,6 +37,7 @@
                             <td>calls</td>
                             <td>revenue</td>
                             <td>quota</td>
+                            <td>% to quota</td>
                             <td>demos</td>
                             <td>pipeline</td>
                             <td class="closing-percentage">closing %</td>

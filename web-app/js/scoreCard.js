@@ -14,7 +14,7 @@ function updateScoreCard(data, dateFilter) {
     }
 
     $("#repStatsTable tbody").children().remove()
-    $(".spinner").hide();
+    $(".loading").hide();
 
     rep = data.repData;
 
@@ -82,13 +82,10 @@ function updateScoreCard(data, dateFilter) {
     console.log(grabGrade(rollupScore));
     $("#gradeAverage").html(grabGrade(rollupScore));
 
-    
-
-
 }
 
 function showSpinner() {
-    $(".spinner").show();
+    $(".loading").show();
 }
 
 function redirectedRep(repId) {

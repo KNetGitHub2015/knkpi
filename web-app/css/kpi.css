@@ -76,7 +76,7 @@ body {
 
 .expandableTable {
     color: #fff;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     padding-bottom: 10px;
     padding-left: 20px;
@@ -94,7 +94,7 @@ table {
 
 thead {
     height: 40px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     border-color: #e56b29;
 }
@@ -138,7 +138,9 @@ table thead tr td {
 }
 
 #gradeAverage {
-    padding-right: 20px;
+    width: 70px;
+    height: 70px;
+    padding: 10px;
     font-size: 60px;
     text-align: center;
     color: #000;
@@ -232,4 +234,9 @@ a:visited {
 
 h1 {
     color: #e56b29;
+}
+
+.loading {
+    color: #e56b29;
+    font-size: 12px;
 }

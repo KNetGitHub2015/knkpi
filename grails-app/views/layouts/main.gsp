@@ -15,7 +15,8 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
   		<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>
-		<g:layoutHead/>
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mainOverride.css')}" type="text/css">
+	<g:layoutHead/>
 	</head>
 	<body>
 		<div id="grailsLogo" role="banner">

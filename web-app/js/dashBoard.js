@@ -19,7 +19,7 @@ function dashBoardInit(managers, salesReps, scoreCardUrl, dateFilter, dayOfPerio
             var managerTotalDiv = $('#manager' + managerTotal.id + ' > thead');
             managerTotalDiv.append(managerRow);
 
-            var $managerTableData = "<td class='repName managerName'>Team: " + managerTotal.name + "</td><td class='weighted-grade'></td><td class='calls'>" + managerTotal.totalCalls + "</td><td>$" + managerTotal.totalRevenueAttainment.formatMoney(0, ".", ",") + "</td><td>$" + managerTotal.quota.formatMoney(0, ".", ",") + "</td><td>" + managerTotal.totalDemos + "</td><td>$" + managerTotal.totalPipelineManagement.formatMoney(0, ".", ",") + "</td><td>" + (managerTotal.totalClosingPercentage * 100).toFixed(0) + "%</td>";
+            var $managerTableData = "<td class='repName managerName'>Team: " + managerTotal.name + "</td><td class='weighted-grade'></td><td class='calls'>" + managerTotal.totalCalls + "</td><td>$" + managerTotal.totalRevenueAttainment.formatMoney(0, ".", ",") + "</td><td>$" + managerTotal.quota.formatMoney(0, ".", ",") + "</td><td>" + ((managerTotal.totalRevenueAttainment / managerTotal.quota) * 100).toFixed(0) + "%</td><td>" + managerTotal.totalDemos + "</td><td>$" + managerTotal.totalPipelineManagement.formatMoney(0, ".", ",") + "</td><td>" + (managerTotal.totalClosingPercentage * 100).toFixed(0) + "%</td>";
             $("#manager" + managerTotal.id + " > thead").append($managerTableData);
 
         }
@@ -44,7 +44,7 @@ function dashBoardInit(managers, salesReps, scoreCardUrl, dateFilter, dayOfPerio
                         pipelineWeighted + closingWeighted) / 5));
             var grade = grabGrade(score);
 
-            var $tableData = "<td class='repName'><a href='" + scoreCardUrl + "?repId=" + rep.repId + "'>" + rep.repName + "</a></td><td class='weighted-grade' data-score='" + score + "'>" + grade + "</td><td class='calls'>" + rep.calls + "</td><td>$" + rep.revenueAttainment.formatMoney(0, ".", ",") + "</td><td>$" + rep.revenueSetting.formatMoney(0, ".", ",") + "</td><td>" + rep.demos + "</td><td>$" + rep.pipelineManagement.formatMoney(0, ".", ",") + "</td><td>" + (rep.closingPercentage * 100).toFixed(0) + "%</td>";
+            var $tableData = "<td class='repName'><a href='" + scoreCardUrl + "?repId=" + rep.repId + "'>" + rep.repName + "</a></td><td class='weighted-grade' data-score='" + score + "'>" + grade + "</td><td class='calls'>" + rep.calls + "</td><td>$" + rep.revenueAttainment.formatMoney(0, ".", ",") + "</td><td>$" + rep.revenueSetting.formatMoney(0, ".", ",") + "</td><td>" + ((rep.revenueAttainment / rep.revenueSetting) * 100).toFixed(0) + "%</td><td>" + rep.demos + "</td><td>$" + rep.pipelineManagement.formatMoney(0, ".", ",") + "</td><td>" + (rep.closingPercentage * 100).toFixed(0) + "%</td>";
             $("#rep" + rep.repId + "").append($tableData);
         }
     }

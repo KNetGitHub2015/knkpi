@@ -101,6 +101,8 @@ class KPIController {
             manager.totalClosingPercentage = manager.totalClosingPercentage / repCount
         }
 
+
+
         def salesRepsJson = salesReps as JSON
         def managersJson = managers as JSON
 

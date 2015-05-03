@@ -41,7 +41,7 @@
             <sec:ifNotGranted roles="${Role.ADMIN}, ${Role.MANAGER}">
                 <g:hiddenField id="salesRep" name="salesRep" value="${repId}"/>
             </sec:ifNotGranted>
-        </form><span id="spinner" class="spinner" style="display:none;"></span><br>
+        </form><span id="loading" class="loading" style="display:none;">Fetching data...</span><br>
         <div id="repInfo">
             <label class="repLabels" for="repTitle">Title:</label>
             <span id="repTitle" class="infoFields"></span> <br>

@@ -1,0 +1,20 @@
+#grailsLogo {
+    background-color: #000000;
+}
+
+.footer {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+a:link {
+    color: #e56b29;
+}
+
+a:visited {
+    color: #e56b29;
+}
+
+h1 {
+    color: #e56b29;
+}
