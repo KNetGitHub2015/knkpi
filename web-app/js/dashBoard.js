@@ -1,4 +1,4 @@
-function dashBoardInit(managers, salesReps, scoreCardUrl, dateFilter, dayOfPeriod, totalDays) {
+function dashBoardInit(managers, salesReps, scoreCardUrl, teamScoreCardUrl, dateFilter, dayOfPeriod, totalDays) {
     var metricMultiplier = 1;
 
     switch(dateFilter) {
@@ -19,7 +19,13 @@ function dashBoardInit(managers, salesReps, scoreCardUrl, dateFilter, dayOfPerio
             var managerTotalDiv = $('#manager' + managerTotal.id + ' > thead');
             managerTotalDiv.append(managerRow);
 
-            var $managerTableData = "<td class='repName managerName'>Team: " + managerTotal.name + "</td><td class='weighted-grade'></td><td class='calls'>" + managerTotal.totalCalls + "</td><td>$" + managerTotal.totalRevenueAttainment.formatMoney(0, ".", ",") + "</td><td>$" + managerTotal.quota.formatMoney(0, ".", ",") + "</td><td>" + ((managerTotal.totalRevenueAttainment / managerTotal.quota) * 100).toFixed(0) + "%</td><td>" + managerTotal.totalDemos + "</td><td>$" + managerTotal.totalPipelineManagement.formatMoney(0, ".", ",") + "</td><td>" + (managerTotal.totalClosingPercentage * 100).toFixed(0) + "%</td>";
+            managerTotal.callSetting = 0;
+            managerTotal.revenueSetting = 0;
+            managerTotal.demoSetting = 0;
+            managerTotal.pipelineSetting = 0;
+            managerTotal.closingSetting = 0;
+
+            var $managerTableData = "<td class='repName managerName'><a href='" + teamScoreCardUrl + "?repId=" + managerTotal.id + "&dateFilter=" + dateFilter + "'>Team: " + managerTotal.name + "</a></td><td class='weighted-grade'></td><td class='calls'>" + managerTotal.totalCalls + "</td><td>$" + managerTotal.totalRevenueAttainment.formatMoney(0, ".", ",") + "</td><td>$" + managerTotal.quota.formatMoney(0, ".", ",") + "</td><td>" + ((managerTotal.totalRevenueAttainment / managerTotal.quota) * 100).toFixed(0) + "%</td><td>" + managerTotal.totalDemos + "</td><td>$" + managerTotal.totalPipelineManagement.formatMoney(0, ".", ",") + "</td><td>" + (managerTotal.totalClosingPercentage * 100).toFixed(0) + "%</td>";
             $("#manager" + managerTotal.id + " > thead").append($managerTableData);
 
         }
@@ -28,7 +34,20 @@ function dashBoardInit(managers, salesReps, scoreCardUrl, dateFilter, dayOfPerio
     for (var repId in salesReps) {
         if (salesReps.hasOwnProperty(repId)) {
             var rep = salesReps[repId];
-            var manager = rep.managerId;
+            var managerIndex = -1;
+            for (var i = 0; i < managers.length; i++) {
+                if (managers[i].id == rep.managerId) {
+                    managerIndex = i;
+                    break;
+                }
+            }
+
+            var manager = managers[managerIndex];
+            manager.callSetting += rep.callSetting;
+            manager.revenueSetting += rep.revenueSetting;
+            manager.demoSetting += rep.demoSetting;
+            manager.pipelineSetting += rep.pipelineSetting;
+            manager.closingSetting += rep.closingSetting;
 
             var $repRow = "<tr id='rep" + rep.repId + "' class='rep-row'></tr>";
             var managerDiv = $('#manager' + rep.managerId + ' > tbody');
@@ -59,13 +78,23 @@ function dashBoardInit(managers, salesReps, scoreCardUrl, dateFilter, dayOfPerio
     for (var managerId in managers) {
        if (managers.hasOwnProperty(managerId)) {
            var manager = managers[managerId];
-           var $weightedGrades = $("#manager" + manager.id + " .rep-row .weighted-grade");
-           var sum = $.makeArray($weightedGrades).reduce(function(prev, current) {
-               return prev + $(current).data('score');
-           }, 0);
-           var percentage = sum / $weightedGrades.length;
-           var finalGrade = grabGrade(percentage);
-           $('#manager' + manager.id + ' > thead .weighted-grade').html(finalGrade);
+           var callScore = calcWeightedPercentage(manager.totalCalls, manager.callSetting, metricMultiplier, dayOfPeriod, totalDays);
+           var revenueScore = calcWeightedPercentage(manager.totalRevenueAttainment, manager.revenueSetting, metricMultiplier, dayOfPeriod, totalDays);
+           var demoScore = calcWeightedPercentage(manager.totalDemos, manager.demoSetting, metricMultiplier, dayOfPeriod, totalDays);
+           var pipelineScore = calcWeightedPercentage(manager.totalPipelineManagement, manager.pipelineSetting, metricMultiplier, dayOfPeriod, totalDays);
+           var closingScore = calcWeightedPercentage(manager.totalClosingPercentage, manager.closingSetting, metricMultiplier, dayOfPeriod, totalDays);
+
+           var managerKpis = [
+               {score: callScore, weight: kpiWeights.calls},
+               {score: revenueScore, weight: kpiWeights.revenue},
+               {score: demoScore, weight: kpiWeights.demos},
+               {score: pipelineScore, weight: kpiWeights.pipeline},
+               {score: closingScore, weight: kpiWeights.closing}
+           ];
+
+           var managerScore = rollupScores(managerKpis);
+           var managerGrade = grabGrade(managerScore);
+           $('#manager' + manager.id + ' > thead .weighted-grade').html(managerGrade);
        }
     }
 

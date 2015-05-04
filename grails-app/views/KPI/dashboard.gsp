@@ -52,7 +52,8 @@
 </div>
 <jq:jquery>
     var scoreCardUrl = "${createLink(controller: 'KPI', action: 'scoreCard')}";
-    dashBoardInit(${raw(managersJson)}, ${raw(salesReps)}, scoreCardUrl, '${dateFilter}', ${dayOfPeriod}, ${totalDays});
+    var teamScoreCardUrl = "${createLink(controller: 'KPI', action: 'teamScoreCard')}";
+    dashBoardInit(${raw(managersJson)}, ${raw(salesReps)}, scoreCardUrl, teamScoreCardUrl, '${dateFilter}', ${dayOfPeriod}, ${totalDays});
 </jq:jquery>
 </body>
 </html>

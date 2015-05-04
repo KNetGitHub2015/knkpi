@@ -140,6 +140,7 @@ table thead tr td {
 #gradeAverage {
     width: 70px;
     height: 70px;
+    line-height: 70px;
     padding: 10px;
     font-size: 60px;
     text-align: center;
